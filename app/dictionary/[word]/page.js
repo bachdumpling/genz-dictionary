@@ -85,11 +85,47 @@ function WordPage({ params: { word } }) {
   // console.log(words);
 
   return (
-    <div className="">
-      Word: {word}
-      {wordThatIsClickedOn && displayChosenWord(wordThatIsClickedOn)}
-      {displayWords(words)}
-    </div>
+    <>
+      <div className="flex flex-col justify-center items-center space-y-6 max-w-5xl mx-auto">
+        {/* {wordThatIsClickedOn && displayChosenWord(wordThatIsClickedOn)} */}
+        <div className="flex flex-row gap-4">
+          <div className="">
+            {wordThatIsClickedOn && displayChosenWord(wordThatIsClickedOn)}
+            {displayWords(words)}
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <div className="p-4 rounded-[16px] border bg-[#2C5EF1] w-[300px] h-[172px] text-white">
+              <p className="font-bold">Synonyms</p>
+              <ol>
+                <div className="bg-[#FDFDFD] bg-opacity-50 text-sm p-3 rounded-[10px] flex shadow-md h-[48px] w-full my-2">
+                  <p className="font-semibold pl-2 pr-4 text-[#2C5EF1]">1</p>
+                  <li className="font-semibold text-base"> Pretend</li>
+                </div>
+                <div className="bg-[#FDFDFD] bg-opacity-50 text-sm p-3 rounded-[10px] flex shadow-md h-[48px] w-full my-2">
+                  <p className="font-semibold pl-2 pr-4 text-[#2C5EF1]">1</p>
+                  <li className="font-semibold text-base"> Deceive</li>
+                </div>
+              </ol>
+            </div>
+
+            <div className="p-4 rounded-[16px] border bg-[#57AAA7] w-[300px] h-[172px] text-white">
+              <p className="font-bold">Antonyms</p>
+              <ol>
+                <div className="bg-[#FDFDFD] bg-opacity-50 text-sm p-3 rounded-[10px] flex shadow-md h-[48px] w-full my-2">
+                  <p className="font-semibold pl-2 pr-4 text-[#57AAA7]">1</p>
+                  <li className="font-semibold text-base"> Honesty</li>
+                </div>
+                <div className="bg-[#FDFDFD] bg-opacity-50 text-sm p-3 rounded-[10px] flex shadow-md h-[48px] w-full my-2">
+                  <p className="font-semibold pl-2 pr-4 text-[#57AAA7]">1</p>
+                  <li className="font-semibold text-base"> Legitimacy</li>
+                </div>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

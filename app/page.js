@@ -11,7 +11,7 @@ function Home() {
   const [word, setWord] = useRecoilState(chosenWordState);
   const [words, setWords] = useState([]);
 
-  console.log(word);
+  // console.log(word);
 
   return (
     <>
@@ -20,7 +20,7 @@ function Home() {
           <h1 className="font-bold text-3xl">LOGO</h1>
           <p className="font-light">Decode the lingo, speak Gen Z fluently.</p>
 
-          <div className="relative w-[900px]">
+          <div className="relative w-[900px] shadow-md rounded-[16px]">
             <Search
               setInput={setInput}
               input={input}

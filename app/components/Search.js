@@ -1,11 +1,15 @@
 "use client";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import React from "react";
 import { useEffect, useState } from "react";
 import WordCard from "./WordCard";
+import { useRouter } from "next/navigation";
 
 function Search({ setInput, input, word, setWord, words, setWords }) {
+  const router = useRouter();
+
   const options = {
     method: "GET",
     headers: {
@@ -22,9 +26,11 @@ function Search({ setInput, input, word, setWord, words, setWords }) {
     );
     const data = await response.json();
     if (data.list) {
+      setWord(data.list[0]);
     } else {
       setWord("No definition found.");
     }
+    router.push(`/dictionary/${data.list[0]?.word}`);
   };
 
   const handleWordChange = async (e) => {
@@ -52,9 +58,12 @@ function Search({ setInput, input, word, setWord, words, setWords }) {
           value={input}
           onChange={handleWordChange}
         />
+        <button className="top-1 right-1 absolute bg-[#D9D9D9] bg-opacity-70 p-2 w-[40px] h-[40px] rounded-[8px]">
+          <ArrowRightIcon className="text-white w-6 h-6" />
+        </button>
       </form>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full absolute bg-white">
         {words.map((word) => (
           <button
             className="border-2 text-start text-ellipsis truncate"
@@ -63,7 +72,7 @@ function Search({ setInput, input, word, setWord, words, setWords }) {
             }}
             key={word.defid}
           >
-            <Link href={`/dictionary/${word.word}`}>
+            <Link prefetch={true} href={`/dictionary/${word.word}`}>
               {word.word}: {word.definition}{" "}
             </Link>
           </button>

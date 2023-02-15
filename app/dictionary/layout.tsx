@@ -1,3 +1,5 @@
+import { useRecoilValue } from "recoil";
+import { chosenWordState } from "../../atoms/wordAtom";
 import DictionaryHeader from "../components/DictionaryHeader";
 import Navigation from "../components/Navigation";
 export default function RootLayout({
@@ -7,6 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <div>
+      {/* <DictionaryHeader word={wordThatIsClickedOn} /> */}
       <DictionaryHeader />
       {children}
     </div>

@@ -1,32 +1,63 @@
+"use client";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { chosenWordState } from "../../atoms/wordAtom";
+import Search from "./Search";
 
 function DictionaryHeader() {
+  const [input, setInput] = useState("");
+  const [word, setWord] = useRecoilState(chosenWordState);
+  const [words, setWords] = useState([]);
+  const [wordThatIsClickedOn, setWordThatIsClickedOn] = useState(
+    useRecoilValue(chosenWordState)
+  );
+
+  // Save "wordThatIsClickedOn" to localStorage
+  function saveWordToStorage(word) {
+    localStorage.setItem("chosenWord", JSON.stringify(word));
+  }
+
+  useEffect(() => {
+    if (!wordThatIsClickedOn) {
+      const localStorageData = localStorage.getItem("chosenWord");
+      setWordThatIsClickedOn(JSON.parse(localStorageData));
+    } else {
+      saveWordToStorage(wordThatIsClickedOn);
+    }
+  }, [wordThatIsClickedOn]);
+
   return (
-    <div className="flex justify-between item p-6 items-center">
+    <div className="flex justify-between item p-6 items-center border">
       {/* Header + Search bar + User Icon */}
 
       {/* Header */}
       <div>
-        <p className="font-bold text-2xl">Dictionary</p>
+        <p className="font-bold text-2xl">
+          Definition for: "
+          <span className="capitalize text-[#047AFF]">
+            {wordThatIsClickedOn.word}
+          </span>
+          "
+        </p>
       </div>
 
       <div className="flex space-x-4">
         {/* Search Bar */}
-        <form class="relative">
-          <button class="absolute top-0 left-0 mt-3 ml-4">
-            <MagnifyingGlassIcon className="h-6 w-6 text-[#AAAAAA]" />
-          </button>
-          <input
-            type="text"
-            class="w-[400px] h-[48px] py-2 px-4 bg-white rounded-[10px] outline-none focus:border focus:border-gray-400 shadow-sm pl-14"
-            placeholder="Search"
+        <div className="relative w-[400px] shadow-md rounded-[16px]">
+          <Search
+            setInput={setInput}
+            input={input}
+            word={word}
+            setWord={setWord}
+            words={words}
+            setWords={setWords}
           />
-        </form>
+        </div>
 
         {/* User */}
-        <div className="h-[48px] w-[48px] bg-white flex justify-center items-center rounded-[10px] shadow-sm">
+        <div className="h-[48px] w-[48px] bg-white flex justify-center items-center rounded-[10px] shadow-md ">
           <UserCircleIcon className="h-6 w-6 text-[#AAAAAA]" />
         </div>
       </div>
