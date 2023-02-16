@@ -29,7 +29,7 @@ function DictionaryHeader() {
   }, [wordThatIsClickedOn]);
 
   return (
-    <div className="flex justify-between item p-6 items-center border">
+    <div className="flex justify-between item p-6 items-center">
       {/* Header + Search bar + User Icon */}
 
       {/* Header */}

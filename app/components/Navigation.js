@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { GrHomeRounded } from "react-icons/gr";
 
 function Navigation() {
   const pathname = usePathname();
@@ -15,7 +16,7 @@ function Navigation() {
 
   return (
     <header className="w-[200px] bg-[#FDFDFD] h-full ">
-      <h1 className="p-6 text-center font-extrabold"> LOGO </h1>
+      <h1 className="m-10 text-center font-extrabold text-3xl"> LOGO </h1>
       {/* navigation */}
 
       {/* Home */}
