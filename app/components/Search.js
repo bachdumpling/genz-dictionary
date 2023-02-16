@@ -77,10 +77,15 @@ function Search({ setInput, input, word, setWord, words, setWords }) {
               className="border-2 text-start text-ellipsis truncate"
               onClick={() => {
                 setWord(chosenWord);
+                // console.log(chosenWord);
               }}
               key={chosenWord.defid}
             >
-              <Link prefetch={true} href={`/dictionary/${chosenWord.word}`}>
+              <Link
+                prefetch={true}
+                href={`/dictionary/term=${encodeURIComponent(chosenWord.word)}`}
+                // href={`/dictionary/`+ chosenWord.word}
+              >
                 {chosenWord.word}: {chosenWord.definition}{" "}
               </Link>
             </button>
