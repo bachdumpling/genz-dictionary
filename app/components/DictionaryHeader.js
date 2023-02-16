@@ -1,18 +1,18 @@
 "use client";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
+import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { chosenWordState } from "../../atoms/wordAtom";
 import Search from "./Search";
 
 function DictionaryHeader() {
+  const pathname = usePathname();
   const [input, setInput] = useState("");
   const [word, setWord] = useRecoilState(chosenWordState);
   const [words, setWords] = useState([]);
-  const [wordThatIsClickedOn, setWordThatIsClickedOn] = useState(
-    useRecoilValue(chosenWordState)
-  );
+  const [wordThatIsClickedOn, setWordThatIsClickedOn] = useRecoilState(chosenWordState);
 
   // Save "wordThatIsClickedOn" to localStorage
   function saveWordToStorage(word) {
@@ -33,15 +33,21 @@ function DictionaryHeader() {
       {/* Header + Search bar + User Icon */}
 
       {/* Header */}
-      <div>
-        <p className="font-bold text-2xl">
-          Definition for: "
-          <span className="capitalize text-[#047AFF]">
-            {wordThatIsClickedOn.word}
-          </span>
-          "
-        </p>
-      </div>
+      {pathname === "/dictionary" ? (
+        <div>
+          <p className="font-bold text-2xl">Welcome to our dictionary</p>
+        </div>
+      ) : (
+        <div>
+          <p className="font-bold text-2xl">
+            Definition for: "
+            <span className="capitalize text-[#047AFF]">
+              {wordThatIsClickedOn?.word}
+            </span>
+            "
+          </p>
+        </div>
+      )}
 
       <div className="flex space-x-4">
         {/* Search Bar */}

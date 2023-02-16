@@ -5,10 +5,13 @@ import Link from "next/link";
 import React from "react";
 import { useEffect, useState } from "react";
 import WordCard from "./WordCard";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useRecoilValue } from "recoil";
+import { chosenWordState } from "../../atoms/wordAtom";
 
 function Search({ setInput, input, word, setWord, words, setWords }) {
   const router = useRouter();
+  const pathname = usePathname();
 
   const options = {
     method: "GET",
@@ -44,6 +47,10 @@ function Search({ setInput, input, word, setWord, words, setWords }) {
     // console.log(data?.list);
   };
 
+  // const displayResults(words) => {
+  //   return ;
+  // }
+
   return (
     <>
       <form
@@ -64,31 +71,53 @@ function Search({ setInput, input, word, setWord, words, setWords }) {
       </form>
 
       <div className="flex flex-col w-full absolute bg-white">
-        {words.map((word) => (
-          <button
-            className="border-2 text-start text-ellipsis truncate"
-            onClick={() => {
-              setWord(word);
-            }}
-            key={word.defid}
-          >
-            <Link prefetch={true} href={`/dictionary/${word.word}`}>
-              {word.word}: {word.definition}{" "}
-            </Link>
-          </button>
+        {words.map((chosenWord) => (
+          <>
+            <button
+              className="border-2 text-start text-ellipsis truncate"
+              onClick={() => {
+                setWord(chosenWord);
+              }}
+              key={chosenWord.defid}
+            >
+              <Link prefetch={true} href={`/dictionary/${chosenWord.word}`}>
+                {chosenWord.word}: {chosenWord.definition}{" "}
+              </Link>
+            </button>
+            {/* {pathname == `/` ? (
+              <button
+                className="border-2 text-start text-ellipsis truncate"
+                onClick={() => {
+                  setWord(chosenWord);
+                }}
+                key={chosenWord.defid}
+              >
+                <Link prefetch={true} href={`/dictionary/${chosenWord.word}`}>
+                  {chosenWord.word}: {chosenWord.definition}{" "}
+                </Link>
+              </button>
+            ) : (
+              <button
+                className="border-2 text-start text-ellipsis truncate"
+                onClick={(e) => {
+                  setWord(chosenWord);
+                }}
+                key={chosenWord.defid}
+              >
+                {chosenWord.word != word.word ? (
+                <Link prefetch={true} href={`/dictionary/${chosenWord.word}`}>
+                  {chosenWord.word}: {chosenWord.definition}{" "}
+                </Link>
+                ) : (
+                  <p>
+                    {chosenWord.word}: {chosenWord.definition}{" "}
+                  </p>
+                )}
+              </button>
+            )} */}
+          </>
         ))}
       </div>
-      {/* {word && <WordCard word={word} />}
-      {words
-        .filter((item) => {
-          return item !== word;
-        })
-        .sort((a, b) => {
-          return b.thumbs_up - a.thumbs_up;
-        })
-        .map((word) => {
-          return <WordCard word={word} key={word.id} />;
-        })} */}
     </>
   );
 }

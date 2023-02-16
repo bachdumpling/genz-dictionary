@@ -1,14 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { chosenWordState } from "../../../atoms/wordAtom.js";
 import WordCard from "../../components/WordCard";
 
 function WordPage({ params: { word } }) {
   const [words, setWords] = useState([]);
-  const [wordThatIsClickedOn, setWordThatIsClickedOn] = useState(
-    useRecoilValue(chosenWordState)
-  );
+  const [wordThatIsClickedOn, setWordThatIsClickedOn] =
+    useRecoilState(chosenWordState);
 
   // Save "wordThatIsClickedOn" to localStorage
   function saveWordToStorage(word) {
@@ -29,10 +28,12 @@ function WordPage({ params: { word } }) {
     if (!wordThatIsClickedOn) {
       const localStorageData = localStorage.getItem("chosenWord");
       setWordThatIsClickedOn(JSON.parse(localStorageData));
+      // console.log("word pulled from localstorage", wordThatIsClickedOn);
     } else {
       saveWordToStorage(wordThatIsClickedOn);
+      // console.log("word saved to localstorage", wordThatIsClickedOn);
     }
-  }, [wordThatIsClickedOn]);
+  }, [wordThatIsClickedOn, words]);
 
   // Fetch words from API and set "Words" array
   const fetchWords = async (word) => {
@@ -65,24 +66,21 @@ function WordPage({ params: { word } }) {
     }
 
     fetchData();
-  }, [word]);
+  }, [word, wordThatIsClickedOn]);
 
   // Display words and chosen word
   function displayWords(words) {
     return findAndRemoveWord(wordThatIsClickedOn.defid, words)
       .sort((a, b) => b.thumbs_up - a.thumbs_up)
       .map((word) => <WordCard word={word} key={word.defid} />);
-    // return words
-    //   .sort((a, b) => b.thumbs_up - a.thumbs_up)
-    //   .map((word) => <WordCard word={word} key={word.defid} />);
   }
 
   function displayChosenWord(word) {
     return <WordCard word={word} />;
   }
 
-  console.log(wordThatIsClickedOn, words);
-  // console.log(words);
+  // console.log(wordThatIsClickedOn.defid);
+  // console.log("word param:", word);
 
   return (
     <>

@@ -88,7 +88,7 @@ function WordCard({ word }) {
 
             <button className="rounded-[10px] p-2 bg-black shadow-md">
               <a href={word.permalink} target="_blank">
-                <Image src={udlogo} className="w-6 h-6" />
+                <Image src={udlogo} className="w-6 h-6" alt="urban dictionary link"/>
               </a>
             </button>
           </div>
@@ -99,13 +99,13 @@ function WordCard({ word }) {
         </p> */}
         {/* <div className="pb-[32px] font-semibold">{word?.definition}</div> */}
 
-        <p
+        <div
           className={`pb-[32px] font-semibold ${
             showMore ? "h-auto" : "h-[70px] truncate overflow-hidden"
           }`}
         >
           {DisplayTextWithLineBreaks(removeSpecialCharacters(word?.definition))}
-        </p>
+        </div>
         <div className="w-full text-right">
           {!showMore ? (
             <button
@@ -125,10 +125,9 @@ function WordCard({ word }) {
         </div>
 
         <h2 className="pb-[16px] font-bold">Example:</h2>
-        {/* <p className="text-sm">{word?.example}</p> */}
-        <p className="text-sm">
+        <div className="text-sm">
           {DisplayTextWithLineBreaks(removeSpecialCharacters(word?.example))}
-        </p>
+        </div>
       </div>
 
       {/* <Modal showShare={showShare} handleShowShare={handleShowShare}>

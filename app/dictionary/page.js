@@ -10,7 +10,6 @@ import DictionaryHeader from "../components/DictionaryHeader.js";
 function Dictionary() {
   return (
     <>
-      {/* <DictionaryHeader /> */}
       <h1>Dictionary</h1>
     </>
   );
