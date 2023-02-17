@@ -83,8 +83,7 @@ function Search({ setInput, input, word, setWord, words, setWords }) {
             >
               <Link
                 prefetch={true}
-                href={`/dictionary/term=${encodeURIComponent(chosenWord.word)}`}
-                // href={`/dictionary/`+ chosenWord.word}
+                href={`/dictionary/${encodeURIComponent(chosenWord.word)}`}
               >
                 {chosenWord.word}: {chosenWord.definition}{" "}
               </Link>

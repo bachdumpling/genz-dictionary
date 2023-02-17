@@ -8,7 +8,6 @@ function WordPage({ params: { word } }) {
   const [words, setWords] = useState([]);
   const [wordThatIsClickedOn, setWordThatIsClickedOn] =
     useRecoilState(chosenWordState);
-
   // Save "wordThatIsClickedOn" to localStorage
   function saveWordToStorage(word) {
     localStorage.setItem("chosenWord", JSON.stringify(word));
@@ -66,7 +65,7 @@ function WordPage({ params: { word } }) {
     }
 
     fetchData();
-  }, [word, wordThatIsClickedOn]);
+  }, [wordThatIsClickedOn]);
 
   // Display words and chosen word
   function displayWords(words) {
@@ -79,8 +78,8 @@ function WordPage({ params: { word } }) {
     return <WordCard word={word} />;
   }
 
-  // console.log(wordThatIsClickedOn.defid);
-  console.log("word param:", word, decodeURIComponent(word));
+  // console.log(wordThatIsClickedOn, word);
+  // console.log("word param:", decodeURIComponent(word));
 
   return (
     <>
@@ -124,7 +123,6 @@ function WordPage({ params: { word } }) {
             </div>
           </div>
         </div>
-
       </div>
     </>
   );

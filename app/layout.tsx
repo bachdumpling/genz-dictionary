@@ -1,6 +1,7 @@
 "use client";
 import "../styles/globals.css";
 import Navigation from "./components/Navigation";
+import Provider from "./components/Provider";
 import {
   RecoilRoot,
   atom,
@@ -18,10 +19,14 @@ export default function RootLayout({
       <html>
         <head />
         <body>
-          <div className="flex h-screen">
-            <Navigation />
-            <div className="flex-1 overflow-auto bg-[#F6F6F6]">{children}</div>
-          </div>
+          <Provider>
+            <div className="flex h-screen">
+              <Navigation />
+              <div className="flex-1 overflow-auto bg-[#F6F6F6]">
+                {children}
+              </div>
+            </div>
+          </Provider>
         </body>
       </html>
     </RecoilRoot>

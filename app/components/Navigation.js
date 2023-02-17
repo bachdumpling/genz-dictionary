@@ -15,7 +15,7 @@ function Navigation() {
   // console.log(pathname);
 
   return (
-    <header className="w-[200px] bg-[#FDFDFD] h-full ">
+    <header className="w-[200px] bg-[#FDFDFD] h-full">
       <h1 className="m-10 text-center font-extrabold text-3xl"> LOGO </h1>
       {/* navigation */}
 
