@@ -58,15 +58,32 @@ function Search({ setInput, input, word, setWord, words, setWords }) {
       .join("");
   }
 
+  function capitalizeFirstLetter(str) {
+    // Find the index of the first letter that is not a special character
+    let index = 0;
+    while (index < str.length && !/[a-zA-Z]/.test(str.charAt(index))) {
+      index++;
+    }
+
+    // If the index is less than the length of the string, capitalize the letter
+    if (index < str.length) {
+      const capitalizedChar = str.charAt(index).toUpperCase();
+      return str.slice(0, index) + capitalizedChar + str.slice(index + 1);
+    }
+
+    // If no letter is found, return the original string
+    return str;
+  }
+
   return (
     <>
       <form
-        className="flex justify-center items-center"
+        className="flex justify-center items-center w-full"
         onSubmit={handleSubmit}
       >
         <input
           type="text"
-          className="h-[48px] w-full py-2 px-4 bg-white rounded-[10px] outline-none focus:border focus:border-gray-400 shadow-sm pl-8"
+          className="h-[48px] w-full py-2 px-4 bg-white rounded-[10px] outline-none focus:border focus:border-gray-400 shadow-sm pl-6"
           placeholder="Search"
           value={input}
           onChange={handleWordChange}
@@ -80,7 +97,7 @@ function Search({ setInput, input, word, setWord, words, setWords }) {
         <div className="p-4 rounded-[10px] shadow-lg flex flex-col w-full absolute bg-white translate-y-2">
           {words.map((chosenWord) => (
             <button
-              className="mb-2 ml-4 text-start text-ellipsis truncate"
+              className="mb-2 ml-2 text-start text-ellipsis truncate"
               onClick={() => {
                 setWord(chosenWord);
                 // console.log(chosenWord);
@@ -94,7 +111,11 @@ function Search({ setInput, input, word, setWord, words, setWords }) {
                 <span className="font-semibold capitalize mr-4">
                   {chosenWord.word}
                 </span>
-                <span>{removeSpecialCharacters(chosenWord.definition)} </span>
+                <span className="">
+                  {capitalizeFirstLetter(
+                    removeSpecialCharacters(chosenWord.definition)
+                  )}{" "}
+                </span>
               </Link>
             </button>
           ))}

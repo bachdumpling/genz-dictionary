@@ -79,7 +79,7 @@ function Navigation() {
         onClick={() => {
           setOpenNav(!openNav);
         }}
-        className="absolute md:hidden w-6 h-6 inset-4 cursor-pointer"
+        className="absolute md:hidden w-6 h-6 inset-4 cursor-pointer z-50"
       />
     </>
   );
