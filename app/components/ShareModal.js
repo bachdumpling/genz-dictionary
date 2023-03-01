@@ -44,9 +44,9 @@ function ShareModal({ word }) {
             <ShareIcon className="w-6 h-6" />
           </Popover.Button>
 
-          <Popover.Panel className="absolute z-10 rounded-[16px] w-[220px] -translate-x-28 bg-white translate-y-2 shadow-md ">
-            <div className="flex justify-center items-center my-[24px] ">
-              <h2 className="w-full text-sm font-semibold">Share</h2>
+          <Popover.Panel className="absolute z-10 rounded-[16px] w-[220px] -translate-x-28 bg-white translate-y-2 shadow-md">
+            <div className="flex my-[24px]">
+              <h2 className="w-full text-center text-sm font-semibold">Share</h2>
               {/* <XMarkIcon
                   onClick={() => {
                     close = true;

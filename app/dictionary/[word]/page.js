@@ -69,7 +69,7 @@ function WordPage({ params: { word } }) {
 
   // Display words and chosen word
   function displayWords(words) {
-    return findAndRemoveWord(wordThatIsClickedOn.defid, words)
+    return findAndRemoveWord(wordThatIsClickedOn?.defid, words)
       .sort((a, b) => b.thumbs_up - a.thumbs_up)
       .map((word) => <WordCard word={word} key={word.defid} />);
   }

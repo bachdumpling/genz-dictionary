@@ -30,10 +30,11 @@ function Search({ setInput, input, word, setWord, words, setWords }) {
     const data = await response.json();
     if (data.list) {
       setWord(data.list[0]);
+      router.push(`/dictionary/${data.list[0]?.word}`);
     } else {
       setWord("No definition found.");
+      // router.push(`/dictionary/${data.list[0]?.word}`);
     }
-    router.push(`/dictionary/${data.list[0]?.word}`);
   };
 
   const handleWordChange = async (e) => {
@@ -47,9 +48,15 @@ function Search({ setInput, input, word, setWord, words, setWords }) {
     // console.log(data?.list);
   };
 
-  // const displayResults(words) => {
-  //   return ;
-  // }
+  function removeSpecialCharacters(str) {
+    const sentencePunctuations = /[\.\?\!\:\"\'\:\(\)\,]/;
+    return str
+      .split("")
+      .filter((char) => {
+        return char.match(/[a-zA-Z0-9\s]/) || char.match(sentencePunctuations);
+      })
+      .join("");
+  }
 
   return (
     <>
@@ -57,24 +64,23 @@ function Search({ setInput, input, word, setWord, words, setWords }) {
         className="flex justify-center items-center"
         onSubmit={handleSubmit}
       >
-        <MagnifyingGlassIcon className="absolute top-0 left-0 mt-3 ml-4 h-6 w-6 text-[#AAAAAA]" />
         <input
           type="text"
-          className="h-[48px] w-full py-2 px-4 bg-white rounded-[10px] outline-none focus:border focus:border-gray-400 shadow-sm pl-14"
+          className="h-[48px] w-full py-2 px-4 bg-white rounded-[10px] outline-none focus:border focus:border-gray-400 shadow-sm pl-8"
           placeholder="Search"
           value={input}
           onChange={handleWordChange}
         />
-        <button className="top-1 right-1 absolute bg-[#D9D9D9] bg-opacity-70 p-2 w-[40px] h-[40px] rounded-[8px]">
-          <ArrowRightIcon className="text-white w-6 h-6" />
+        <button className="top-1.5 right-1.5 absolute bg-[#D9D9D9] bg-opacity-70 p-2 w-[36px] h-[36px] rounded-[8px]">
+          <MagnifyingGlassIcon className="text-white w-5 h-5" />
+          {/* <MagnifyingGlassIcon className="absolute top-0 left-0 mt-3 ml-4 h-6 w-6 text-[#AAAAAA]" /> */}
         </button>
       </form>
-
-      <div className="flex flex-col w-full absolute bg-white">
-        {words.map((chosenWord) => (
-          <>
+      {input && words.length > 0 ? (
+        <div className="p-4 rounded-[10px] shadow-lg flex flex-col w-full absolute bg-white translate-y-2">
+          {words.map((chosenWord) => (
             <button
-              className="border-2 text-start text-ellipsis truncate"
+              className="mb-2 ml-4 text-start text-ellipsis truncate"
               onClick={() => {
                 setWord(chosenWord);
                 // console.log(chosenWord);
@@ -85,43 +91,15 @@ function Search({ setInput, input, word, setWord, words, setWords }) {
                 prefetch={true}
                 href={`/dictionary/${encodeURIComponent(chosenWord.word)}`}
               >
-                {chosenWord.word}: {chosenWord.definition}{" "}
+                <span className="font-semibold capitalize mr-4">
+                  {chosenWord.word}
+                </span>
+                <span>{removeSpecialCharacters(chosenWord.definition)} </span>
               </Link>
             </button>
-            {/* {pathname == `/` ? (
-              <button
-                className="border-2 text-start text-ellipsis truncate"
-                onClick={() => {
-                  setWord(chosenWord);
-                }}
-                key={chosenWord.defid}
-              >
-                <Link prefetch={true} href={`/dictionary/${chosenWord.word}`}>
-                  {chosenWord.word}: {chosenWord.definition}{" "}
-                </Link>
-              </button>
-            ) : (
-              <button
-                className="border-2 text-start text-ellipsis truncate"
-                onClick={(e) => {
-                  setWord(chosenWord);
-                }}
-                key={chosenWord.defid}
-              >
-                {chosenWord.word != word.word ? (
-                <Link prefetch={true} href={`/dictionary/${chosenWord.word}`}>
-                  {chosenWord.word}: {chosenWord.definition}{" "}
-                </Link>
-                ) : (
-                  <p>
-                    {chosenWord.word}: {chosenWord.definition}{" "}
-                  </p>
-                )}
-              </button>
-            )} */}
-          </>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : null}
     </>
   );
 }
