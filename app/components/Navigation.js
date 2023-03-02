@@ -10,15 +10,25 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GrHomeRounded } from "react-icons/gr";
+import { motion } from "framer-motion";
+import NavigationMenu from "./NavigationMenu";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 function Navigation() {
   const pathname = usePathname();
-  const [openNav, setOpenNav] = useState(false);
-  // console.log(pathname);
+  const [isOpen, setIsOpen] = useState(true);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   return (
     <>
-      <header className="hidden md:inline-block h-full md:w-[100px] lg:w-[200px] bg-[#FDFDFD]">
+      <header className="hidden md:inline-block h-full md:w-[100px] lg:w-[200px] bg-[#FDFDFD] drop-shadow-sm">
         <h1 className="lg:m-10 my-6 text-center font-extrabold text-xl lg:text-3xl">
           {" "}
           LOGO{" "}
@@ -75,12 +85,55 @@ function Navigation() {
         </div>
       </header>
 
-      <Bars2Icon
+      <motion.button
         onClick={() => {
-          setOpenNav(!openNav);
+          openModal();
         }}
-        className="absolute md:hidden w-6 h-6 inset-4 cursor-pointer z-50"
-      />
+        className="absolute md:hidden w-6 h-6 top-8 left-6 cursor-pointer z-50"
+        whileHover={{ scale: 1.2 }}
+        whileTap={{ scale: 0.9 }}
+        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+      >
+        <Bars2Icon className="" />
+      </motion.button>
+
+      {isOpen && (
+        <NavigationMenu
+          isOpen={isOpen}
+          onClose={closeModal}
+          pathname={pathname}
+          HomeIcon={HomeIcon}
+        >
+          <div className="absolute top-2 right-2">
+            <button type="button" onClick={closeModal}>
+              <XMarkIcon className="w-4 h-4 text-[#AAAAAA]" />
+            </button>
+          </div>
+
+          <div className="mt-2 flex flex-col justify-start space-y-[24px] text-sm">
+            <Link href="/">
+              <div className={`flex ${pathname === "/" ? "" : ""}`}>
+                <HomeIcon className="h-6 w-6 mr-4" />
+                <p className="">Home</p>
+              </div>
+            </Link>
+
+            <Link href="/dictionary">
+              <div className={`flex ${pathname === "/" ? "" : ""}`}>
+                <BookOpenIcon className="h-6 w-6 mr-4" />
+                <p className="">Dictionary</p>
+              </div>
+            </Link>
+
+            <Link href="/authentication">
+              <div className={`flex ${pathname === "/" ? "" : ""}`}>
+                <ArrowRightOnRectangleIcon className="h-6 w-6 mr-4" />
+                <p className="">Sign In</p>
+              </div>
+            </Link>
+          </div>
+        </NavigationMenu>
+      )}
     </>
   );
 }

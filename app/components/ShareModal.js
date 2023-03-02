@@ -37,14 +37,14 @@ function ShareModal({ word }) {
   }
 
   return (
-    <Popover className="relative">
+    <Popover className="relative" >
       {({ open }) => (
         <>
           <Popover.Button className="rounded-[10px] p-2 bg-white shadow-md hover:scale-110 hover:font-semibold transition-all duration-150 ease-out">
             <ShareIcon className="w-6 h-6" />
           </Popover.Button>
 
-          <Popover.Panel className="absolute z-10 rounded-[16px] w-[220px] -translate-x-28 bg-white translate-y-2 shadow-md">
+          <Popover.Panel className="absolute rounded-[16px] w-[220px] -translate-x-28 bg-white translate-y-2 shadow-md">
             <div className="flex my-[24px]">
               <h2 className="w-full text-center text-sm font-semibold">Share</h2>
               {/* <XMarkIcon

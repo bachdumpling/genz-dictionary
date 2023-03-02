@@ -15,27 +15,33 @@ function Home() {
 
   return (
     <>
-      <div className="w-full mt-20 min-w-fit">
-        <div className="flex flex-col justify-center items-center space-y-6 max-w-4xl md:mx-auto mx-4">
-          <h1 className="font-bold text-3xl">LOGO</h1>
-          <p className="font-light text-[#AAAAAA] md:text-black">
-            Decode the lingo, speak Gen Z fluently.
-          </p>
+      <div className="w-full">
+        <div className="bg-white pt-[115px] pb-[48px] h-full drop-shadow-sm z-0">
+          <div className="flex flex-col justify-center items-center space-y-6 max-w-4xl mx-4 md:mx-auto md:px-8">
+            <h1 className="font-bold text-3xl">LOGO</h1>
+            <p className="font-light text-[#AAAAAA] md:text-black">
+              Decode the lingo, speak Gen Z fluently.
+            </p>
 
-          {/* <div className="relative w-[320px] lg:w-[900px] shadow-md rounded-[16px]"> */}
-          <div className="relative w-full shadow-md rounded-[16px] z-10">
-            <Search
-              setInput={setInput}
-              input={input}
-              word={word}
-              setWord={setWord}
-              words={words}
-              setWords={setWords}
-            />
+            {/* <div className="relative w-[320px] lg:w-[900px] shadow-md rounded-[16px]"> */}
+            <div
+              className="relative w-full 
+            drop-shadow-md
+            rounded-[16px]"
+            >
+              <Search
+                setInput={setInput}
+                input={input}
+                word={word}
+                setWord={setWord}
+                words={words}
+                setWords={setWords}
+              />
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-flow-col grid-rows-2 md:grid-rows-1 grid-cols-1 md:grid-cols-3  max-w-4xl md:mx-auto mx-auto mt-10 w-full overflow-x-hidden md:gap-x-4">
+        <div className="grid grid-flow-col grid-rows-2 md:grid-rows-1 grid-cols-1 md:grid-cols-3 max-w-4xl md:mx-auto md:px-8 mx-auto mt-[48px] w-full overflow-x-hidden md:gap-x-4">
           <div className="p-6 col-span-2 bg-white h-96 rounded-[16px] mx-4 md:mx-0 mb-4">
             <h2 className="font-bold text-lg">See What's Popular</h2>
             <ol className="mt-4">

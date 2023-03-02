@@ -9,7 +9,23 @@ import { usePathname, useRouter } from "next/navigation";
 import { useRecoilValue } from "recoil";
 import { chosenWordState } from "../../atoms/wordAtom";
 
-function Search({ setInput, input, word, setWord, words, setWords }) {
+function Search({
+  setInput,
+  input,
+  word,
+  setWord,
+  words,
+  setWords,
+  height,
+  top,
+  right,
+  left,
+  pl,
+  textcolor,
+  buttonwidth,
+  buttonheight,
+  buttonbgcolor,
+}) {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -78,23 +94,39 @@ function Search({ setInput, input, word, setWord, words, setWords }) {
   return (
     <>
       <form
-        className="flex justify-center items-center w-full"
+        className="flex justify-center items-center w-full "
         onSubmit={handleSubmit}
       >
         <input
           type="text"
-          className="h-[48px] w-full py-2 px-4 bg-white rounded-[10px] outline-none focus:border focus:border-gray-400 shadow-sm pl-6"
+          className={
+            pathname.includes("/dictionary")
+              ? `h-[40px] md:h-[48px] w-full py-2 px-4 bg-white rounded-[8px] md:rounded-[10px] outline-none focus:border focus:border-gray-400 shadow-sm pl-10 md:pl-12`
+              : `h-[48px] w-full py-2 px-4 bg-white rounded-[10px] outline-none focus:border focus:border-gray-400 shadow-sm pl-6`
+          }
           placeholder="Search"
           value={input}
           onChange={handleWordChange}
         />
-        <button className="top-1.5 right-1.5 absolute bg-[#D9D9D9] bg-opacity-70 p-2 w-[36px] h-[36px] rounded-[8px]">
-          <MagnifyingGlassIcon className="text-white w-5 h-5" />
-          {/* <MagnifyingGlassIcon className="absolute top-0 left-0 mt-3 ml-4 h-6 w-6 text-[#AAAAAA]" /> */}
+        <button
+          // className={`top-${top} right-${right} left-${left} md:top-2 md:left-2 absolute  bg-[${buttonbgcolor}] bg-opacity-70 p-2 w-[${buttonwidth}px] h-[${buttonheight}px] rounded-[8px]`}
+          className={
+            pathname.includes("/dictionary")
+              ? `md:top-3 md:left-3 top-2 left-2 absolute`
+              : `md:top-1.5 md:right-1.5 top-1.5 right-1.5 absolute  bg-[#D9D9D9] bg-opacity-70 p-2 rounded-[8px]`
+          }
+        >
+          <MagnifyingGlassIcon
+            className={
+              pathname.includes("/dictionary")
+                ? `text-[#AAAAAA] w-6 h-6`
+                : `text-[#FFFFFF] w-5 h-5`
+            }
+          />
         </button>
       </form>
       {input && words.length > 0 ? (
-        <div className="p-4 rounded-[10px] shadow-lg flex flex-col w-full absolute bg-white translate-y-2">
+        <div className="z-50 p-4 rounded-[10px] shadow-lg flex flex-col w-full absolute bg-white translate-y-2">
           {words.map((chosenWord) => (
             <button
               className="mb-2 ml-2 text-start text-ellipsis truncate"

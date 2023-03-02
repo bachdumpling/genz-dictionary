@@ -6,7 +6,9 @@ from itertools import chain, combinations
 
 # Loop through the results and create a power set of each sentence
 
-sentence = "such a cutie pie 💀"
+sentence = "such a cutie pie 💀" 
+# power_set of sentence
+power_set = ["such", "a", "cutie", "pie", "such a", "such cutie", "such pie", "a cutie", "a pie", "cutie pie", "such a cutie", "such a pie", "such cutie pie", "a cutie pie", "such a cutie pie"]
 
 # Split the sentence into an array of single words
 words = sentence.split()

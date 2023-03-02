@@ -12,7 +12,8 @@ function DictionaryHeader() {
   const [input, setInput] = useState("");
   const [word, setWord] = useRecoilState(chosenWordState);
   const [words, setWords] = useState([]);
-  const [wordThatIsClickedOn, setWordThatIsClickedOn] = useRecoilState(chosenWordState);
+  const [wordThatIsClickedOn, setWordThatIsClickedOn] =
+    useRecoilState(chosenWordState);
 
   // Save "wordThatIsClickedOn" to localStorage
   function saveWordToStorage(word) {
@@ -29,7 +30,7 @@ function DictionaryHeader() {
   }, [wordThatIsClickedOn]);
 
   return (
-    <div className="flex justify-between item p-6 items-center">
+    <div className="flex justify-between p-6 items-center">
       {/* Header + Search bar + User Icon */}
 
       {/* Header */}
@@ -38,7 +39,7 @@ function DictionaryHeader() {
           <p className="font-bold text-2xl">Welcome to our dictionary</p>
         </div>
       ) : (
-        <div>
+        <div className="hidden md:inline-block w-full">
           <p className="font-bold text-2xl">
             Definition for: "
             <span className="capitalize text-[#047AFF]">
@@ -49,9 +50,12 @@ function DictionaryHeader() {
         </div>
       )}
 
-      <div className="flex space-x-4">
+      <div className="flex space-x-2 w-full ml-10">
         {/* Search Bar */}
-        <div className="relative w-[400px] shadow-md rounded-[16px]">
+        <div
+          className="relative w-full
+            drop-shadow-md rounded-[16px]"
+        >
           <Search
             setInput={setInput}
             input={input}
@@ -63,8 +67,8 @@ function DictionaryHeader() {
         </div>
 
         {/* User */}
-        <div className="h-[48px] w-[48px] bg-white flex justify-center items-center rounded-[10px] shadow-md ">
-          <UserCircleIcon className="h-6 w-6 text-[#AAAAAA]" />
+        <div className="h-[40px] w-[44px] md:h-[48px] md:w-[52px] bg-white flex justify-center items-center rounded-[8px] md:rounded-[10px] drop-shadow-md">
+          <UserCircleIcon className="h-6 w-6 md:w-8 md:h-8 text-[#AAAAAA]" />
         </div>
       </div>
     </div>

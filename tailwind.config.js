@@ -7,7 +7,14 @@ module.exports = {
     "./out/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      dropShadow: {
+        'des': [
+          "0 4px 24px -4px rgba(0, 0, 0, 0.1)",
+          "0 6px 8px -2px rgba(0, 0, 0, 0.03)",
+        ],
+      },
+    },
   },
   plugins: [],
 };
