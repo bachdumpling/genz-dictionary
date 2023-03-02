@@ -16,15 +16,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 
 function Navigation() {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(true);
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -87,7 +79,7 @@ function Navigation() {
 
       <motion.button
         onClick={() => {
-          openModal();
+          setIsOpen(true);
         }}
         className="absolute md:hidden w-6 h-6 top-8 left-6 cursor-pointer z-50"
         whileHover={{ scale: 1.2 }}
@@ -100,12 +92,16 @@ function Navigation() {
       {isOpen && (
         <NavigationMenu
           isOpen={isOpen}
-          onClose={closeModal}
+          setIsOpen={setIsOpen}
           pathname={pathname}
-          HomeIcon={HomeIcon}
         >
-          <div className="absolute top-2 right-2">
-            <button type="button" onClick={closeModal}>
+          <div className="absolute top-4 right-4">
+            <button
+              type="button"
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            >
               <XMarkIcon className="w-4 h-4 text-[#AAAAAA]" />
             </button>
           </div>

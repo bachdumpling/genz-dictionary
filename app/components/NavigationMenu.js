@@ -2,20 +2,15 @@ import { Dialog, Transition } from "@headlessui/react";
 import Link from "next/link";
 import { Fragment, useState } from "react";
 
-export default function NavigationMenu({
-  setIsOpen,
-  isOpen,
-  pathname,
-  HomeIcon,
-  onClose,
-  children,
-}) {
+export default function NavigationMenu({ setIsOpen, isOpen, children }) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
         as="div"
         className="fixed top-0 left-0 z-50 overflow-y-auto"
-        onClose={onClose}
+        onClose={() => {
+          setIsOpen(false);
+        }}
       >
         <div className="min-h-screen px-4 text-center">
           <Transition.Child
@@ -38,7 +33,7 @@ export default function NavigationMenu({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="inline-block w-full max-w-md p-6 pr-10 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-[12px]">
+            <div className="inline-block w-full max-w-md p-6 pr-12 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-[12px]">
               {children}
             </div>
           </Transition.Child>
