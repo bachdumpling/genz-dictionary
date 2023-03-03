@@ -31,15 +31,13 @@ function WordCard({ word }) {
 
   return (
     <div
-      className={`border rounded-[16px] mb-4 bg-white w-[700px] h-[350px] ${
-        showMore ? "h-auto" : "h-[350px] overflow-hidden"
+      className={`border rounded-[16px] mb-4 bg-white w-[350px] md:w-[500px] lg:w-[700px] h-[300px] md:h-[350px] ${
+        showMore ? "md:h-auto" : "h-[350px] overflow-hidden"
       }`}
     >
       <div className="px-[32px] py-[32px]">
         <div className="flex justify-between mb-[32px]">
-          <h1 className="text-4xl font-bold capitalize">
-            {word?.word}
-          </h1>
+          <h1 className="text-4xl font-bold capitalize">{word?.word}</h1>
           <div className="space-x-4 flex">
             <ShareModal word={word} />
 
@@ -61,19 +59,29 @@ function WordCard({ word }) {
         {/* <div className="pb-[32px] font-semibold">{word?.definition}</div> */}
 
         <div
-          className={`pb-[32px] font-semibold ${
-            showMore ? "h-auto" : "h-[70px] truncate overflow-hidden"
+          className={`pb-[32px] font-semibold leading-loose ${
+            showMore ? "h-auto" : "h-[70px] text-ellipsis overflow-hidden"
           }`}
         >
           {DisplayTextWithLineBreaks(removeSpecialCharacters(word?.definition))}
         </div>
-        <div className="w-full text-right">
+
+        <h2 className="pb-[16px] font-bold">Example:</h2>
+        <div
+          className={`text-[#AAAAAA] font-light leading-loose ${
+            showMore ? "h-auto" : "h-[70px] overflow-hidden"
+          }`}
+        >
+          {DisplayTextWithLineBreaks(removeSpecialCharacters(word?.example))}
+        </div>
+
+        <div className="w-full text-right pb-[32px]">
           {!showMore ? (
             <button
               onClick={handleDefinitionClick}
-              className="text-blue-500 cursor-pointer ml-2"
+              className="text-blue-500 underline cursor-pointer ml-2"
             >
-              ... see more
+              See More
             </button>
           ) : (
             <button
@@ -83,11 +91,6 @@ function WordCard({ word }) {
               ... see less
             </button>
           )}
-        </div>
-
-        <h2 className="pb-[16px] font-bold">Example:</h2>
-        <div className="text-sm">
-          {DisplayTextWithLineBreaks(removeSpecialCharacters(word?.example))}
         </div>
       </div>
     </div>

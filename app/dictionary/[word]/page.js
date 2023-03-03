@@ -91,7 +91,7 @@ function WordPage({ params: { word } }) {
             {displayWords(words)}
           </div>
 
-          <div className="hidde">
+          <div className="hidden md:inline-block">
             <div className="flex flex-col gap-4">
               <div className="p-4 rounded-[16px] border bg-[#2C5EF1] w-[300px] h-[172px] text-white">
                 <p className="font-bold">Synonyms</p>
