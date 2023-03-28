@@ -13,6 +13,7 @@ import { GrHomeRounded } from "react-icons/gr";
 import { motion } from "framer-motion";
 import NavigationMenu from "./NavigationMenu";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { ImBooks } from "react-icons/im";
 
 function Navigation() {
   const pathname = usePathname();
@@ -48,16 +49,24 @@ function Navigation() {
               }`}
             >
               {/* <Image src={search} /> */}
-              <BookOpenIcon className="h-6 w-6 lg:ml-2 lg:mr-4" />
+              <ImBooks className="h-6 w-6 lg:ml-2 lg:mr-4" />
               <p className="hidden lg:flex">Dictionary</p>
             </div>
           </Link>
 
           {/* Thesaurus */}
-          {/* <div className="flex p-2 mx-4 rounded-[10px] border">
-          <BookOpenIcon className="h-6 w-6 ml-2 mr-4" />
-          <p>Thesaurus</p>
-        </div> */}
+
+          <Link href="/thesaurus">
+            <div
+              className={`flex p-[10px] mx-10 lg:mx-5 rounded-[10px] items-center ${
+                pathname.includes("/thesaurus") ? "text-white bg-black" : ""
+              }`}
+            >
+              {/* <Image src={search} /> */}
+              <BookOpenIcon className="h-6 w-6 lg:ml-2 lg:mr-4" />
+              <p className="hidden lg:flex">Thesaurus</p>
+            </div>
+          </Link>
 
           {/* Dark Mode */}
           {/* <div className="flex p-2 mx-4 rounded-[10px] border">

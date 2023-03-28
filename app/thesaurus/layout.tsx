@@ -11,9 +11,7 @@ export default function RootLayout({
     <div>
       {/* <DictionaryHeader word={wordThatIsClickedOn} /> */}
       <DictionaryHeader>
-        <div className=" w-fit border">
-          <p className="font-bold text-2xl">Welcome to our dictionary</p>
-        </div>
+        <p className="font-bold text-2xl">Thesaurus</p>
       </DictionaryHeader>
       {children}
     </div>

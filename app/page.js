@@ -5,13 +5,13 @@ import { useRecoilState } from "recoil";
 import { chosenWordState } from "../atoms/wordAtom";
 import Footer from "./components/Footer";
 import Search from "./components/Search";
+import { BiUserPin } from "react-icons/bi";
+import {BsFillChatLeftTextFill} from "react-icons/bs";
 
 function Home() {
   const [input, setInput] = useState("");
   const [word, setWord] = useRecoilState(chosenWordState);
   const [words, setWords] = useState([]);
-
-  // console.log(word);
 
   return (
     <>
@@ -79,23 +79,23 @@ function Home() {
               </div>
             </div>
 
-            <div className="bg-[#2A2A2A] rows-span-1 p-4 h-[80px] md:h-[122px] rounded-[16px] flex text-white">
+            <div className="bg-[#2C5EF1] rows-span-1 p-4 h-[80px] md:h-[122px] rounded-[16px] flex text-white">
               <div className="bg-white bg-opacity-50 mr-4 rounded-[10px] grid place-content-center w-[52px] h-[52px] md:w-[90px] md:h-[90px]">
-                <BuildingStorefrontIcon className="h-6 w-6 text-black" />
+                <BiUserPin className="h-6 w-6 text-black" />
               </div>
               <div className="grid place-content-center space-y-2">
-                <p className="text-sm font-semibold">Chrome Extension</p>
-                <p className="text-xs font-light">Add to Chrome</p>
+                <p className="text-sm font-semibold">Create An Account</p>
+                <p className="text-xs font-light">Unlock More Features</p>
               </div>
             </div>
 
-            <div className="bg-[#2A2A2A] rows-span-1 p-4 h-[80px] md:h-[122px] rounded-[16px] flex text-white">
+            <div className="bg-[#57AAA7] rows-span-1 p-4 h-[80px] md:h-[122px] rounded-[16px] flex text-white">
               <div className="bg-white bg-opacity-50 mr-4 rounded-[10px] grid place-content-center w-[52px] h-[52px] md:w-[90px] md:h-[90px]">
-                <BuildingStorefrontIcon className="h-6 w-6 text-black" />
+                <BsFillChatLeftTextFill className="h-5 w-5 text-black" />
               </div>
               <div className="grid place-content-center space-y-2">
-                <p className="text-sm font-semibold">Chrome Extension</p>
-                <p className="text-xs font-light">Add to Chrome</p>
+                <p className="text-sm font-semibold">Suggest Us</p>
+                <p className="text-xs font-light">Let's Hear It!</p>
               </div>
             </div>
           </div>

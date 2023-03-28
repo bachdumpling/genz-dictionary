@@ -8,6 +8,7 @@ function WordPage({ params: { word } }) {
   const [words, setWords] = useState([]);
   const [wordThatIsClickedOn, setWordThatIsClickedOn] =
     useRecoilState(chosenWordState);
+  // || useState(JSON.parse(localStorage.getItem("chosenWord")));
   // Save "wordThatIsClickedOn" to localStorage
   function saveWordToStorage(word) {
     localStorage.setItem("chosenWord", JSON.stringify(word));
@@ -45,7 +46,9 @@ function WordPage({ params: { word } }) {
     };
 
     const res = await fetch(
-      `https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=${wordThatIsClickedOn.word}`,
+      `https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=${
+        wordThatIsClickedOn.word || word
+      }`,
       options
     );
 

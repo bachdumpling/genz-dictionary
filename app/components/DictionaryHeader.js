@@ -7,7 +7,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { chosenWordState } from "../../atoms/wordAtom";
 import Search from "./Search";
 
-function DictionaryHeader() {
+function DictionaryHeader({ children }) {
   const pathname = usePathname();
   const [input, setInput] = useState("");
   const [word, setWord] = useRecoilState(chosenWordState);
@@ -34,11 +34,7 @@ function DictionaryHeader() {
       {/* Header + Search bar + User Icon */}
 
       {/* Header */}
-      {pathname === "/dictionary" ? (
-        <div>
-          <p className="font-bold text-2xl">Welcome to our dictionary</p>
-        </div>
-      ) : (
+      {pathname === `/dictionary/${wordThatIsClickedOn?.word}` ? (
         <div className="hidden md:inline-block w-full">
           <p className="font-bold text-2xl">
             Definition for: "
@@ -48,6 +44,8 @@ function DictionaryHeader() {
             "
           </p>
         </div>
+      ) : (
+        <div>{children}</div>
       )}
 
       <div className="flex space-x-2 w-full ml-10">

@@ -8,10 +8,10 @@ import Image from "next/image";
 import DictionaryHeader from "../components/DictionaryHeader.js";
 
 function Dictionary() {
+  // console.log(OPENAI_API_KEY)
   return (
     <>
       <h1>Dictionary</h1>
-      
     </>
   );
 }

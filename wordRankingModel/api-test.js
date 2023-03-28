@@ -1,29 +1,19 @@
-// const OpenAI = require("openai-api");
-
-// Load your key from an environment variable or secret management service
-// (do not include your key directly in your code)
-// const OPENAI_API_KEY = "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";
-
-// const openai = new OpenAI(OPENAI_API_KEY);
-
 const { Configuration, OpenAIApi } = require("openai");
-
+const key = "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";
 const configuration = new Configuration({
-//   apiKey: process.env.OPENAI_API_KEY,
-  // apiKey: "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",
+  apiKey: key,
 });
 
 const openai = new OpenAIApi(configuration);
 
-async function getSynonyms() {
-  const response = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: `Synonyms and antonyms of "LMAO"`,
-    max_tokens: 200,
-    temperature: 0,
+openai
+  .createCompletion({
+    model: "gpt-3.5-turbo",
+    message: [{ role: "user", content: "Hello!" }],
+    // max_tokens: 200,
+    // temperature: 0,
+  })
+  .then((response) => {
+    const answer = response.data.choices[0].message.content;
+    console.log(answer);
   });
-
-  console.log(response.data.choices[0].text);
-}
-
-getSynonyms();
