@@ -28,10 +28,9 @@ function WordPage({ params: { word } }) {
     if (!wordThatIsClickedOn) {
       const localStorageData = localStorage.getItem("chosenWord");
       setWordThatIsClickedOn(JSON.parse(localStorageData));
-      // console.log("word pulled from localstorage", wordThatIsClickedOn);
+
     } else {
       saveWordToStorage(wordThatIsClickedOn);
-      // console.log("word saved to localstorage", wordThatIsClickedOn);
     }
   }, [wordThatIsClickedOn, words]);
 
@@ -68,7 +67,7 @@ function WordPage({ params: { word } }) {
     }
 
     fetchData();
-  }, [wordThatIsClickedOn]);
+  }, [wordThatIsClickedOn, word]);
 
   // Display words and chosen word
   function displayWords(words) {
