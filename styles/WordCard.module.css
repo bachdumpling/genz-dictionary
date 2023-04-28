@@ -1,0 +1,16 @@
+.word-card {
+    min-height: 300px;
+    transition: max-height 0.5s ease-in-out;
+  }
+  
+  @media (min-width: 768px) {
+    .word-card {
+      min-height: 350px;
+    }
+  }
+  
+  .word-card.overflow-auto {
+    max-height: 1000px;
+    transition: max-height 0.5s ease-in-out;
+  }
+  

@@ -132,6 +132,7 @@ function Search({
               className="mb-2 ml-2 text-start text-ellipsis truncate"
               onClick={() => {
                 setWord(chosenWord);
+                setInput("");
                 // console.log(chosenWord);
               }}
               key={chosenWord.defid}

@@ -6,7 +6,9 @@ import { chosenWordState } from "../atoms/wordAtom";
 import Footer from "./components/Footer";
 import Search from "./components/Search";
 import { BiUserPin } from "react-icons/bi";
-import {BsFillChatLeftTextFill} from "react-icons/bs";
+import { BsFillChatLeftTextFill } from "react-icons/bs";
+import logo from "../public/logo.svg";
+import Image from "next/image";
 
 function Home() {
   const [input, setInput] = useState("");
@@ -17,16 +19,20 @@ function Home() {
     <>
       <div className="w-full">
         <div className="bg-white pt-[115px] pb-[48px] h-full drop-shadow-sm z-0">
-          <div className="flex flex-col justify-center items-center space-y-6 max-w-4xl mx-4 md:mx-auto md:px-8">
-            <h1 className="font-bold text-3xl">LOGO</h1>
-            <p className="font-light text-[#AAAAAA] md:text-black">
-              Decode the lingo, speak Gen Z fluently.
-            </p>
+          <div className="flex flex-col justify-center items-center max-w-4xl mx-4 md:mx-auto md:px-8">
+            <div className=" flex flex-col justify-center items-center w-full mb-[32px]">
+              <div className="flex mb-[32px]">
+                <Image src={logo} className="w-8 h-10 mr-10" />
+                <p className="font-bold text-3xl">z-define</p>
+              </div>
+              <p className="font-light text-[#AAAAAA] text-xl">
+                Decode the lingo, speak Gen Z fluently.
+              </p>
+            </div>
 
-            {/* <div className="relative w-[320px] lg:w-[900px] shadow-md rounded-[16px]"> */}
             <div
               className="relative w-full 
-            drop-shadow-md
+            drop-shadow-lg
             rounded-[16px]"
             >
               <Search

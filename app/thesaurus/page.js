@@ -1,54 +1,56 @@
-import React from "react";
+'use client'
+import React, { useEffect, useState } from "react";
+import ThesaurusComponent from "../components/ThesaurusComponent";
+const { OpenAIApi, Configuration } = require("openai");
+import fetchData from "./fetchData.server";
 
-const slangSynonymsAndAntonyms = {
-  Boujee: {
-    synonyms: ["fancy", "upscale", "high-class"],
-    antonyms: ["low-class", "basic", "unrefined"],
-  },
-  "Bussin'": {
-    synonyms: ["poppin'", "lit", "crackin'"],
-    antonyms: ["dead", "boring", "quiet"],
-  },
-  Drip: {
-    synonyms: ["swag", "style", "finesse"],
-    antonyms: ["no style", "out of fashion", "uncool"],
-  },
-  Extra: {
-    synonyms: ["over-the-top", "dramatic", "excessive"],
-    antonyms: ["understated", "reserved", "moderate"],
-  },
-  "Rent-free": {
-    synonyms: ["unbothered", "carefree", "nonchalant"],
-    antonyms: ["worried", "stressed", "preoccupied"],
-  },
-  Salty: {
-    synonyms: ["bitter", "angry", "upset"],
-    antonyms: ["happy", "content", "pleased"],
-  },
-  Shook: {
-    synonyms: ["shocked", "surprised", "astonished"],
-    antonyms: ["unfazed", "unimpressed", "calm"],
-  },
-  "Vibe check": {
-    synonyms: ["energy check", "mood check", "atmosphere check"],
-    antonyms: ["vibe kill", "mood killer", "atmosphere killer"],
-  },
-  Woke: {
-    synonyms: ["aware", "conscious", "enlightened"],
-    antonyms: ["ignorant", "unaware", "unenlightened"],
-  },
-};
+// const slangSynonymsAndAntonyms = {
+//   Boujee: {
+//     synonyms: ["fancy", "upscale", "high-class"],
+//     antonyms: ["low-class", "basic", "unrefined"],
+//   },
+//   "Bussin'": {
+//     synonyms: ["poppin'", "lit", "crackin'"],
+//     antonyms: ["dead", "boring", "quiet"],
+//   },
+//   Drip: {
+//     synonyms: ["swag", "style", "finesse"],
+//     antonyms: ["no style", "out of fashion", "uncool"],
+//   },
+//   Extra: {
+//     synonyms: ["over-the-top", "dramatic", "excessive"],
+//     antonyms: ["understated", "reserved", "moderate"],
+//   },
+//   "Rent-free": {
+//     synonyms: ["unbothered", "carefree", "nonchalant"],
+//     antonyms: ["worried", "stressed", "preoccupied"],
+//   },
+//   Salty: {
+//     synonyms: ["bitter", "angry", "upset"],
+//     antonyms: ["happy", "content", "pleased"],
+//   },
+//   Shook: {
+//     synonyms: ["shocked", "surprised", "astonished"],
+//     antonyms: ["unfazed", "unimpressed", "calm"],
+//   },
+//   "Vibe check": {
+//     synonyms: ["energy check", "mood check", "atmosphere check"],
+//     antonyms: ["vibe kill", "mood killer", "atmosphere killer"],
+//   },
+//   Woke: {
+//     synonyms: ["aware", "conscious", "enlightened"],
+//     antonyms: ["ignorant", "unaware", "unenlightened"],
+//   },
+// };
 
 const SlangList = () => {
   return (
     <div className="">
       {Object.entries(slangSynonymsAndAntonyms).map(([slang, data]) => (
-        <div key={slang} className="mb-10">
-          <div className="flex w-full mb-4 mt-4 justify-center">
-            <h3 className="font-bold p-2 w-3/6 bg-white shadow-md text-center rounded-[10px]">{slang}</h3>
-          </div>
-          <div className="flex flex-row justify-center gap-4">
-            <div className="p-4 rounded-[16px] border bg-[#2C5EF1] w-[300px] h-fit text-white">
+        <div key={slang} className="w-full mb-10 bg-white rounded-[16px]">
+          <p className="font-bold text-3xl px-8 pt-6 pb-2">{slang}</p>
+          <div className="flex flex-row justify-center gap-4 p-6">
+            <div className="p-4 rounded-[16px] border bg-[#2C5EF1] w-1/2 h-fit text-white">
               <p className="font-bold">Synonyms</p>
               <ul>
                 {Object.entries(data.synonyms).map((word, index) => {
@@ -63,7 +65,7 @@ const SlangList = () => {
                 })}
               </ul>
             </div>
-            <div className="p-4 rounded-[16px] border bg-[#57AAA7] w-[300px] h-fit text-white">
+            <div className="p-4 rounded-[16px] border bg-[#57AAA7] w-1/2 h-fit text-white">
               <p className="font-bold">Antonyms</p>
               <ul>
                 {Object.entries(data.antonyms).map((word, index) => {
@@ -86,12 +88,28 @@ const SlangList = () => {
 };
 
 function Thesaurus() {
-  // console.log(slangSynonymsAndAntonyms.Boujee.synonyms);
-  console.log(Object.entries(slangSynonymsAndAntonyms)[0][1].synonyms);
+  const [slangSynonymsAndAntonyms, setSlangSynonymsAndAntonyms] = useState(null);
+  const [word, setWord] = useState("dope"); // You can replace this with a dynamic value
+
+  useEffect(() => {
+    async function fetchAndSetData() {
+      const data = await fetchData(word);
+      setSlangSynonymsAndAntonyms(data);
+    }
+
+    fetchAndSetData();
+  }, [word]);
+
+  console.log(slangSynonymsAndAntonyms)
 
   return (
-    <div className="max-w-2xl mx-auto mb-10">
-      <SlangList />
+    <div className="max-w-4xl mx-auto mb-10">
+      {/* {slangSynonymsAndAntonyms && (
+        <ThesaurusComponent
+          slangSynonymsAndAntonyms={slangSynonymsAndAntonyms}
+        />
+      )} */}
+      {/* <SlangList /> */}
     </div>
   );
 }

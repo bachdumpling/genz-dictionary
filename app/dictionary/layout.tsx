@@ -8,10 +8,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      {/* <DictionaryHeader word={wordThatIsClickedOn} /> */}
+    <div className="max-w-5xl mx-auto">
       <DictionaryHeader>
-        <div className=" w-fit border">
+        <div className="hidden md:inline-block w-full">
           <p className="font-bold text-2xl">Welcome to our dictionary</p>
         </div>
       </DictionaryHeader>

@@ -8,7 +8,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <div className="max-w-5xl mx-auto">
       {/* <DictionaryHeader word={wordThatIsClickedOn} /> */}
       <DictionaryHeader>
         <p className="font-bold text-2xl">Thesaurus</p>

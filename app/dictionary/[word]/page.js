@@ -81,12 +81,9 @@ function WordPage({ params: { word } }) {
     return <WordCard word={word} />;
   }
 
-  // console.log(wordThatIsClickedOn, word);
-  // console.log("word param:", decodeURIComponent(word));
-
   return (
     <>
-      <div className="flex flex-col justify-center items-center space-y-6 max-w-5xl mx-auto">
+      <div className="flex flex-col justify-center items-center space-y-6">
         {/* {wordThatIsClickedOn && displayChosenWord(wordThatIsClickedOn)} */}
         <div className="flex flex-row gap-4">
           <div className="">

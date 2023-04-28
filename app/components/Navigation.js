@@ -14,6 +14,8 @@ import { motion } from "framer-motion";
 import NavigationMenu from "./NavigationMenu";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { ImBooks } from "react-icons/im";
+import Image from "next/image";
+import logo from "../../public/logo.svg";
 
 function Navigation() {
   const pathname = usePathname();
@@ -22,10 +24,10 @@ function Navigation() {
   return (
     <>
       <header className="hidden md:inline-block h-full md:w-[100px] lg:w-[200px] bg-[#FDFDFD] drop-shadow-sm">
-        <h1 className="lg:m-10 my-6 text-center font-extrabold text-xl lg:text-3xl">
-          {" "}
-          LOGO{" "}
-        </h1>
+        <div className=" flex flex-col justify-center items-center w-full">
+          <Image src={logo}  className="w-6 h-8 mt-[32px] mb-[32px]"/>
+          <div className="border-b-1  md:w-[72px] w-[24px] h-[1px] mb-[32px] border"></div>
+        </div>
         {/* navigation */}
 
         {/* Home */}

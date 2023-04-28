@@ -2,6 +2,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import udlogo from "./Assets/udlogo.svg";
 import ShareModal from "./ShareModal";
+import "../../styles/WordCard.module.css";
+import ShowMoreText from "react-show-more-text";
 
 function WordCard({ word }) {
   // console.log(typeof word);
@@ -31,8 +33,8 @@ function WordCard({ word }) {
 
   return (
     <div
-      className={`border rounded-[16px] mb-4 bg-white w-[350px] md:w-[500px] lg:w-[700px] h-[300px] md:h-[350px] ${
-        showMore ? "md:h-auto" : "h-[350px] overflow-hidden"
+      className={`border rounded-[16px] mb-4 bg-white w-[350px] md:w-[500px] lg:w-[700px] min-h-[300px] md:min-h-[330px] ${
+        showMore && "overflow-auto"
       }`}
     >
       <div className="px-[32px] py-[32px]">
@@ -53,44 +55,40 @@ function WordCard({ word }) {
           </div>
         </div>
 
-        {/* <p className="pb-[32px] font-semibold border h-[60px]">
-          {DisplayTextWithLineBreaks(removeSpecialCharacters(word?.definition))}
-        </p> */}
-        {/* <div className="pb-[32px] font-semibold">{word?.definition}</div> */}
-
-        <div
-          className={`pb-[32px] font-semibold leading-loose ${
-            showMore ? "h-auto" : "h-[70px] text-ellipsis overflow-hidden"
-          }`}
-        >
-          {DisplayTextWithLineBreaks(removeSpecialCharacters(word?.definition))}
+        <div className="pb-[32px] text-sm md:text-base">
+          <ShowMoreText
+            lines={2}
+            more="More"
+            less="Less"
+            onClick={handleDefinitionClick}
+            expanded={false}
+            truncatedEndingComponent={"... "}
+            className={`font-semibold leading-loose 
+            ${showMore && "h-auto"}`}
+            anchorClass="font-light text-[#047AFF] underline cursor-pointer flex justify-end"
+          >
+            {DisplayTextWithLineBreaks(
+              removeSpecialCharacters(word?.definition)
+            )}
+          </ShowMoreText>
         </div>
 
-        <h2 className="pb-[16px] font-bold">Example:</h2>
-        <div
-          className={`text-[#AAAAAA] font-light leading-loose ${
-            showMore ? "h-auto" : "h-[70px] overflow-hidden"
-          }`}
-        >
-          {DisplayTextWithLineBreaks(removeSpecialCharacters(word?.example))}
-        </div>
+        <h2 className="pb-[16px] font-bold text-sm md:text-base">Example:</h2>
 
-        <div className="w-full text-right pb-[32px]">
-          {!showMore ? (
-            <button
-              onClick={handleDefinitionClick}
-              className="text-blue-500 underline cursor-pointer ml-2"
-            >
-              See More
-            </button>
-          ) : (
-            <button
-              onClick={handleDefinitionClick}
-              className="text-blue-500 cursor-pointer ml-2"
-            >
-              ... see less
-            </button>
-          )}
+        <div className="text-sm md:text-base">
+          <ShowMoreText
+            lines={2}
+            more="More"
+            less="Less"
+            onClick={handleDefinitionClick}
+            expanded={false}
+            truncatedEndingComponent={"... "}
+            className={`font-light leading-loose
+            ${showMore && "h-auto"}`}
+            anchorClass="font-light text-[#047AFF] underline transition-all cursor-pointer"
+          >
+            {DisplayTextWithLineBreaks(removeSpecialCharacters(word?.example))}
+          </ShowMoreText>
         </div>
       </div>
     </div>
