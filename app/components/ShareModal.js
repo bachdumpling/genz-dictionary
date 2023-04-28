@@ -37,7 +37,7 @@ function ShareModal({ word }) {
   }
 
   return (
-    <Popover className="relative" >
+    <Popover className="" >
       {({ open }) => (
         <>
           <Popover.Button className="rounded-[10px] p-2 bg-white shadow-md hover:scale-110 hover:font-semibold transition-all duration-150 ease-out">
