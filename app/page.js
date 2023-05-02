@@ -52,7 +52,7 @@ function Home() {
                 </Link>
                 <p className="font-bold text-3xl">z-define</p>
               </div>
-              <p className="font-light text-center text-[#AAAAAA] text-xl">
+              <p className="font-light text-center text-[#AAAAAA] text-base md:text-xl">
                 Decode the lingo, speak Gen Z fluently.
               </p>
             </div>

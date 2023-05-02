@@ -44,7 +44,7 @@ function WordCard({ word }) {
     >
       <div className="px-[32px] py-[32px]">
         <div className="flex justify-between mb-[32px]">
-          <h1 className="text-4xl font-bold capitalize">{word?.word}</h1>
+          <h1 className="text-2xl md:text-4xl  font-bold capitalize">{word?.word}</h1>
           <div className="space-x-4 flex">
             <ShareModal word={word} />
 

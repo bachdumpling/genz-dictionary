@@ -3,9 +3,11 @@ import React, { useEffect, useState } from "react";
 import WordFrequencyBarChart from "../components/WordFrequencyBarChart.js";
 import WordCard from "../components/WordCard.js";
 import { data } from "../components/WordFrequencyData.js";
+import { usePathname } from "next/navigation.js";
 
 function Dictionary() {
   const [words, setWords] = useState([]);
+  const pathname = usePathname();
 
   // Fetch words from API and set "Words" array
   const fetchWords = async (wordArray) => {
@@ -43,17 +45,17 @@ function Dictionary() {
     }
 
     fetchData();
-  }, []);
+  }, [pathname]);
 
   // console.log(words[1].definition);
 
   return (
     <>
       {/* <h1>Dictionary</h1> */}
-      <div className="flex">
+      <div className="flex justify-center ">
         <div className="flex flex-col">
           <div className="bg-white rounded-[16px] p-8 flex-1 justify-center items-center mb-8 shadow-md">
-            <h1 className="text-start w-full text-[#AAAAAA] font-bold text-xl mb-8">
+            <h1 className="text-start w-full text-[#AAAAAA] font-bold text-lg md:text-xl mb-8">
               People are talking about...
             </h1>
             <WordFrequencyBarChart numberOfWords={5} height={200} />
@@ -67,7 +69,7 @@ function Dictionary() {
           </div>
         </div>
 
-        <div className="hidden lg:inline-block bg-white w-full h-full shadow-md rounded-[16px] p-8 ml-4">
+        <div className="hidden lg:inline-block bg-white w-full h-full shadow-md rounded-[16px] p-8 ml-4 relative">
           <h2 className="font-semibold text-xl mb-6"> Word of the day</h2>
           <p className="font-semibold text-5xl text-[#047AFF] mb-6">Cap</p>
           <p className="font-extralight text-sm text-gray-500 mb-6">Slang</p>
