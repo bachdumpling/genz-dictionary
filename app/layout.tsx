@@ -2,6 +2,7 @@
 import "../styles/globals.css";
 import Navigation from "./components/Navigation";
 import Provider from "./components/Provider";
+import { Analytics } from "@vercel/analytics/react";
 import {
   RecoilRoot,
   atom,
@@ -27,6 +28,7 @@ export default function RootLayout({
                 {children}
               </div>
             </div>
+            <Analytics />
           </Provider>
         </body>
       </html>
