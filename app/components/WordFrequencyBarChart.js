@@ -58,7 +58,7 @@ const YAxisTick = (props) => {
   );
 };
 
-function WordFrequencyBarChart({ numberOfWords = 7, height = 300 }) {
+function WordFrequencyBarChart({ numberOfWords = 5, height = 250 }) {
   const displayedData = data.slice(0, numberOfWords);
 
   return (
