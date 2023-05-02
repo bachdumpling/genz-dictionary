@@ -77,7 +77,7 @@ function Home() {
 
         <div className="grid grid-flow-col grid-rows-2 md:grid-rows-1 grid-cols-1 md:grid-cols-3 max-w-4xl md:mx-auto md:px-8 mx-auto mt-[48px] w-full overflow-x-hidden md:gap-x-4">
           <div className="p-6 col-span-2 bg-white h-96 rounded-[16px] mx-4 md:mx-0 mb-4 relative z-0">
-            <h1 className="text-start w-full text-black font-bold text-lg mb-4 pt-2 pl-4">
+            <h1 className="text-start w-full text-black font-bold text-lg pt-2 pl-4">
               See what&#8216;s popular...
             </h1>
             <div className="relative -z-10 pt-8">
