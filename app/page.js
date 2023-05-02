@@ -181,12 +181,12 @@ function Home() {
               </div>
             </Link>
 
-            <Link href="/authentication">
+            {/* <Link href="/authentication">
               <div className={`flex ${pathname === "/" ? "" : ""}`}>
                 <ArrowRightOnRectangleIcon className="h-6 w-6 mr-4" />
                 <p className="">Sign In</p>
               </div>
-            </Link>
+            </Link> */}
           </div>
         </NavigationMenu>
       )}
