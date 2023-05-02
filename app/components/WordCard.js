@@ -32,8 +32,13 @@ function WordCard({ word }) {
   }
 
   return (
+    // <div
+    //   className={`border rounded-[16px] mb-4 bg-white w-[350px] md:w-[500px] lg:w-[700px] min-h-[300px] md:min-h-[330px] ${
+    //     showMore && "overflow-auto"
+    //   }`}
+    // >
     <div
-      className={`border rounded-[16px] mb-4 bg-white w-[350px] md:w-[500px] lg:w-[700px] min-h-[300px] md:min-h-[330px] ${
+      className={`rounded-[16px] mb-6 bg-white w-[350px] md:w-[660px] min-h-[300px] md:min-h-[330px] shadow-md ${
         showMore && "overflow-auto"
       }`}
     >
@@ -43,7 +48,7 @@ function WordCard({ word }) {
           <div className="space-x-4 flex">
             <ShareModal word={word} />
 
-            <button className="rounded-[10px] p-2 bg-black shadow-md hover:scale-110 hover:font-semibold transition-all duration-150 ease-out">
+            <div className="rounded-[10px] p-2 bg-black shadow-md hover:scale-110 hover:font-semibold transition-all duration-150 ease-out w-10 h-10 cursor-pointer">
               <a href={word.permalink} target="_blank">
                 <Image
                   src={udlogo}
@@ -51,7 +56,7 @@ function WordCard({ word }) {
                   alt="urban dictionary link"
                 />
               </a>
-            </button>
+            </div>
           </div>
         </div>
 

@@ -1,9 +1,7 @@
 // fetchData.server.js
-
 const { OpenAIApi, Configuration } = require("openai");
 
 const key =  process.env.REACT_APP_OPENAI_API_KEY
-console.log(key, "hello")
 
 async function fetchData(word) {
   const openai = new OpenAIApi(

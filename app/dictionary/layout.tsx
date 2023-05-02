@@ -8,12 +8,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="max-w-5xl mx-auto">
-      <DictionaryHeader>
-        <div className="hidden md:inline-block w-full">
-          <p className="font-bold text-2xl">Welcome to our dictionary</p>
-        </div>
-      </DictionaryHeader>
+    <div className=" md:max-w-2xl lg:max-w-5xl mx-auto">
+      <div className="relative z-10">
+        <DictionaryHeader>
+          <div className="hidden md:inline-block w-full">
+            <p className="font-bold text-2xl">Learn What&#8216;s Trending</p>
+          </div>
+        </DictionaryHeader>
+      </div>
       {children}
     </div>
   );

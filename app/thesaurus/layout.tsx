@@ -10,9 +10,13 @@ export default function RootLayout({
   return (
     <div className="max-w-5xl mx-auto">
       {/* <DictionaryHeader word={wordThatIsClickedOn} /> */}
-      <DictionaryHeader>
-        <p className="font-bold text-2xl">Thesaurus</p>
-      </DictionaryHeader>
+      <div className="relative z-10">
+        <DictionaryHeader>
+          <div className="hidden md:inline-block w-full">
+            <p className="font-bold text-2xl">Thesaurus</p>
+          </div>
+        </DictionaryHeader>
+      </div>
       {children}
     </div>
   );

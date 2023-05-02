@@ -1,47 +1,47 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 import ThesaurusComponent from "../components/ThesaurusComponent";
-const { OpenAIApi, Configuration } = require("openai");
-import fetchData from "./fetchData.server";
+// const { OpenAIApi, Configuration } = require("openai");
+import { OpenAIApi, Configuration } from "openai";
 
-// const slangSynonymsAndAntonyms = {
-//   Boujee: {
-//     synonyms: ["fancy", "upscale", "high-class"],
-//     antonyms: ["low-class", "basic", "unrefined"],
-//   },
-//   "Bussin'": {
-//     synonyms: ["poppin'", "lit", "crackin'"],
-//     antonyms: ["dead", "boring", "quiet"],
-//   },
-//   Drip: {
-//     synonyms: ["swag", "style", "finesse"],
-//     antonyms: ["no style", "out of fashion", "uncool"],
-//   },
-//   Extra: {
-//     synonyms: ["over-the-top", "dramatic", "excessive"],
-//     antonyms: ["understated", "reserved", "moderate"],
-//   },
-//   "Rent-free": {
-//     synonyms: ["unbothered", "carefree", "nonchalant"],
-//     antonyms: ["worried", "stressed", "preoccupied"],
-//   },
-//   Salty: {
-//     synonyms: ["bitter", "angry", "upset"],
-//     antonyms: ["happy", "content", "pleased"],
-//   },
-//   Shook: {
-//     synonyms: ["shocked", "surprised", "astonished"],
-//     antonyms: ["unfazed", "unimpressed", "calm"],
-//   },
-//   "Vibe check": {
-//     synonyms: ["energy check", "mood check", "atmosphere check"],
-//     antonyms: ["vibe kill", "mood killer", "atmosphere killer"],
-//   },
-//   Woke: {
-//     synonyms: ["aware", "conscious", "enlightened"],
-//     antonyms: ["ignorant", "unaware", "unenlightened"],
-//   },
-// };
+const slangSynonymsAndAntonyms = {
+  Boujee: {
+    synonyms: ["fancy", "upscale", "high-class"],
+    antonyms: ["low-class", "basic", "unrefined"],
+  },
+  "Bussin'": {
+    synonyms: ["poppin'", "lit", "crackin'"],
+    antonyms: ["dead", "boring", "quiet"],
+  },
+  Drip: {
+    synonyms: ["swag", "style", "finesse"],
+    antonyms: ["no style", "out of fashion", "uncool"],
+  },
+  Extra: {
+    synonyms: ["over-the-top", "dramatic", "excessive"],
+    antonyms: ["understated", "reserved", "moderate"],
+  },
+  "Rent-free": {
+    synonyms: ["unbothered", "carefree", "nonchalant"],
+    antonyms: ["worried", "stressed", "preoccupied"],
+  },
+  Salty: {
+    synonyms: ["bitter", "angry", "upset"],
+    antonyms: ["happy", "content", "pleased"],
+  },
+  Shook: {
+    synonyms: ["shocked", "surprised", "astonished"],
+    antonyms: ["unfazed", "unimpressed", "calm"],
+  },
+  "Vibe check": {
+    synonyms: ["energy check", "mood check", "atmosphere check"],
+    antonyms: ["vibe kill", "mood killer", "atmosphere killer"],
+  },
+  Woke: {
+    synonyms: ["aware", "conscious", "enlightened"],
+    antonyms: ["ignorant", "unaware", "unenlightened"],
+  },
+};
 
 const SlangList = () => {
   return (
@@ -87,29 +87,58 @@ const SlangList = () => {
   );
 };
 
+// const key = process.env.REACT_APP_OPENAI_API_KEY;
+
+// const configuration = new Configuration({
+//   apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+// });
+
+// const openai = new OpenAIApi(configuration);
+
+// async function fetchData(word) {
+//   const response = await openai.createChatCompletion({
+//     model: "text-davinci-003",
+//     messages: [
+//       {
+//         role: "user",
+//         content: `Return a javascript object with the 3 slang synonyms and 3 slang antonyms of the slang ${word} in this format: "Boujee": {
+//             "synonyms": ["fancy", "upscale", "high-class"],
+//             "antonyms": ["low-class", "basic", "unrefined"]
+//           }`,
+//       },
+//     ],
+//   });
+
+//   const slangSynonymsAndAntonyms = response.data.choices[0].message.content;
+
+//   return slangSynonymsAndAntonyms;
+// }
+
 function Thesaurus() {
-  const [slangSynonymsAndAntonyms, setSlangSynonymsAndAntonyms] = useState(null);
-  const [word, setWord] = useState("dope"); // You can replace this with a dynamic value
+  //   console.log(key);
+  //   const [slangSynonymsAndAntonyms, setSlangSynonymsAndAntonyms] =
+  //     useState(null);
+  //   const [word, setWord] = useState("dope"); // You can replace this with a dynamic value
 
-  useEffect(() => {
-    async function fetchAndSetData() {
-      const data = await fetchData(word);
-      setSlangSynonymsAndAntonyms(data);
-    }
+  //   useEffect(() => {
+  //     async function fetchAndSetData() {
+  //       const data = await fetchData(word);
+  //       setSlangSynonymsAndAntonyms(data);
+  //     }
 
-    fetchAndSetData();
-  }, [word]);
+  //     fetchAndSetData();
+  //   }, [word]);
 
-  console.log(slangSynonymsAndAntonyms)
+  // console.log(slangSynonymsAndAntonyms)
 
   return (
-    <div className="max-w-4xl mx-auto mb-10">
+    <div className="mb-10">
       {/* {slangSynonymsAndAntonyms && (
         <ThesaurusComponent
           slangSynonymsAndAntonyms={slangSynonymsAndAntonyms}
         />
       )} */}
-      {/* <SlangList /> */}
+      <SlangList />
     </div>
   );
 }

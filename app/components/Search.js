@@ -94,7 +94,7 @@ function Search({
   return (
     <>
       <form
-        className="flex justify-center items-center w-full "
+        className="flex justify-center items-center w-full relative"
         onSubmit={handleSubmit}
       >
         <input

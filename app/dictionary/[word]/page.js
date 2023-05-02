@@ -90,7 +90,7 @@ function WordPage({ params: { word } }) {
             {displayWords(words)}
           </div>
 
-          <div className="hidden md:inline-block">
+          <div className="hidden lg:inline-block">
             <div className="flex flex-col gap-4">
               <div className="p-4 rounded-[16px] border bg-[#2C5EF1] w-[300px] h-[172px] text-white">
                 <p className="font-bold">Synonyms</p>
@@ -100,7 +100,7 @@ function WordPage({ params: { word } }) {
                     <li className="font-semibold text-base"> Pretend</li>
                   </div>
                   <div className="bg-[#FDFDFD] bg-opacity-50 text-sm p-3 rounded-[10px] flex shadow-md h-[48px] w-full my-2">
-                    <p className="font-semibold pl-2 pr-4 text-[#2C5EF1]">1</p>
+                    <p className="font-semibold pl-2 pr-4 text-[#2C5EF1]">2</p>
                     <li className="font-semibold text-base"> Deceive</li>
                   </div>
                 </ol>
@@ -114,7 +114,7 @@ function WordPage({ params: { word } }) {
                     <li className="font-semibold text-base"> Honesty</li>
                   </div>
                   <div className="bg-[#FDFDFD] bg-opacity-50 text-sm p-3 rounded-[10px] flex shadow-md h-[48px] w-full my-2">
-                    <p className="font-semibold pl-2 pr-4 text-[#57AAA7]">1</p>
+                    <p className="font-semibold pl-2 pr-4 text-[#57AAA7]">2</p>
                     <li className="font-semibold text-base"> Legitimacy</li>
                   </div>
                 </ol>

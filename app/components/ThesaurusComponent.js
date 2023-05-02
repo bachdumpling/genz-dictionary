@@ -2,8 +2,7 @@ import React from "react";
 
 function ThesaurusComponent({ slangSynonymsAndAntonyms}) {
   console.log(slangSynonymsAndAntonyms);
-  return (
-    <div className="">
+  return (<div className="">
       {Object.entries(slangSynonymsAndAntonyms).map(([slang, data]) => (
         <div key={slang} className="w-full mb-10 bg-white rounded-[16px]">
           <p className="font-bold text-3xl px-8 pt-6 pb-2">{slang}</p>

@@ -21,7 +21,7 @@ export default function RootLayout({
         <head />
         <body>
           <Provider>
-            <div className="flex h-screen">
+            <div className="flex h-screen relative">
               <Navigation />
               <div className="flex-1 overflow-auto bg-[#F6F6F6]">
                 {children}

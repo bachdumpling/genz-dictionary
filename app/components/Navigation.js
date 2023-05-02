@@ -1,32 +1,23 @@
 "use client";
 import React, { useState } from "react";
-import {
-  ArrowRightOnRectangleIcon,
-  Bars2Icon,
-  BookOpenIcon,
-  HomeIcon,
-  MoonIcon,
-} from "@heroicons/react/24/solid";
+import { BookOpenIcon, HomeIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { GrHomeRounded } from "react-icons/gr";
-import { motion } from "framer-motion";
-import NavigationMenu from "./NavigationMenu";
-import { XMarkIcon } from "@heroicons/react/24/outline";
 import { ImBooks } from "react-icons/im";
 import Image from "next/image";
 import logo from "../../public/logo.svg";
 
 function Navigation() {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
       <header className="hidden md:inline-block h-full md:w-[100px] lg:w-[200px] bg-[#FDFDFD] drop-shadow-sm">
         <div className=" flex flex-col justify-center items-center w-full">
-          <Image src={logo}  className="w-6 h-8 mt-[32px] mb-[32px]"/>
-          <div className="border-b-1  md:w-[72px] w-[24px] h-[1px] mb-[32px] border"></div>
+          <Link href="/">
+            <Image src={logo} className="w-6 h-8 mt-[32px] mb-[32px]" />
+          </Link>
+            <div className="border-b-1  md:w-[72px] w-[24px] h-[1px] mb-[32px] border"></div>
         </div>
         {/* navigation */}
 
@@ -87,60 +78,6 @@ function Navigation() {
         </div> */}
         </div>
       </header>
-
-      <motion.button
-        onClick={() => {
-          setIsOpen(true);
-        }}
-        className="absolute md:hidden w-6 h-6 top-8 left-6 cursor-pointer z-50"
-        whileHover={{ scale: 1.2 }}
-        whileTap={{ scale: 0.9 }}
-        transition={{ type: "spring", stiffness: 400, damping: 17 }}
-      >
-        <Bars2Icon className="" />
-      </motion.button>
-
-      {isOpen && (
-        <NavigationMenu
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-          pathname={pathname}
-        >
-          <div className="absolute top-4 right-4">
-            <button
-              type="button"
-              onClick={() => {
-                setIsOpen(false);
-              }}
-            >
-              <XMarkIcon className="w-4 h-4 text-[#AAAAAA]" />
-            </button>
-          </div>
-
-          <div className="mt-2 flex flex-col justify-start space-y-[24px] text-sm">
-            <Link href="/">
-              <div className={`flex ${pathname === "/" ? "" : ""}`}>
-                <HomeIcon className="h-6 w-6 mr-4" />
-                <p className="">Home</p>
-              </div>
-            </Link>
-
-            <Link href="/dictionary">
-              <div className={`flex ${pathname === "/" ? "" : ""}`}>
-                <BookOpenIcon className="h-6 w-6 mr-4" />
-                <p className="">Dictionary</p>
-              </div>
-            </Link>
-
-            <Link href="/authentication">
-              <div className={`flex ${pathname === "/" ? "" : ""}`}>
-                <ArrowRightOnRectangleIcon className="h-6 w-6 mr-4" />
-                <p className="">Sign In</p>
-              </div>
-            </Link>
-          </div>
-        </NavigationMenu>
-      )}
     </>
   );
 }
