@@ -58,7 +58,7 @@ function Dictionary() {
             <h1 className="text-start w-full text-[#AAAAAA] font-bold text-lg md:text-xl mb-8">
               People are talking about...
             </h1>
-            <WordFrequencyBarChart numberOfWords={5} height={200} />
+            <WordFrequencyBarChart numberOfWords={10} height={300} />
           </div>
           <div className=" flex flex-col justify-center items-center">
             {words.map((word) => {
