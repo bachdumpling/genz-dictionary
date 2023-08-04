@@ -1,27 +1,29 @@
-# Next.js + Tailwind CSS Example
+# **GenZ Dictionary**
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+GenZ Dictionary is a web application that serves as a dictionary for GenZ slang. It leverages the Urban Dictionary API and a TikTok comment slang analysis data model as its backend, providing a platform where users can search for the meaning of various GenZ terms and phrases. The application is built with Next.js and leverages Google Analytics for tracking user interactions.
 
-## Deploy your own
+## **Features**
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+### **TikTok Comment Slang Analysis**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+- **Data Collection & Preprocessing**: Utilized web scraping, Python, and NLP tools like NLTK, TextBlob to collect and preprocess 25,000 TikTok comments for slang usage.
+- **Word Ranking Models & Popularity Trends Visualization**: Analyzed the data to create word ranking models and visualize popularity trends.
+- **Marketing Strategies**: Translated insights into actionable marketing strategies.
 
-## How to use
+## **Project Structure**
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+The project is structured as follows:
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-```
+- **`app`**: Main application code, including authentication, components, dictionary, and thesaurus functionalities.
+- **`atoms`**: State management atoms for the application.
+- **`pages`**: Next.js pages for the application.
+- **`public`**: Public assets like logos and icons.
+- **`styles`**: Global and component-specific styles.
 
-```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
+## **Installation**
 
-```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
-```
+To install and run the project locally, follow these steps:
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+1. Clone the repository.
+2. Install the dependencies with **`npm install`**.
+3. Start the development server with **`npm run dev`**.
