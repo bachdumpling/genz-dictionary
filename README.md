@@ -1,4 +1,4 @@
-# **GenZ Dictionary**
+# **[GenZ Dictionary](https://genz-dictionary.vercel.app/)**
 
 GenZ Dictionary is a web application that serves as a dictionary for GenZ slang. It leverages the Urban Dictionary API and a TikTok comment slang analysis data model as its backend, providing a platform where users can search for the meaning of various GenZ terms and phrases. The application is built with Next.js and leverages Google Analytics for tracking user interactions.
 
