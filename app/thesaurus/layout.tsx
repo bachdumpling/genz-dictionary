@@ -8,7 +8,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className=" md:max-w-3xl lg:max-w-5xl md:mx-auto md:px-8 mx-auto">
       {/* <DictionaryHeader word={wordThatIsClickedOn} /> */}
       <div className="relative z-10">
         <DictionaryHeader>
@@ -17,7 +17,7 @@ export default function RootLayout({
           </div>
         </DictionaryHeader>
       </div>
-      {children}
+      <div className="flex-1 overflow-auto bg-[#F6F6F6]">{children}</div>
     </div>
   );
 }

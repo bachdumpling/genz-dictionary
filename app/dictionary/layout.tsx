@@ -8,7 +8,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className=" md:max-w-2xl lg:max-w-5xl mx-auto">
+    <div className=" md:max-w-3xl lg:max-w-5xl md:mx-auto md:px-8 mx-auto">
       <div className="relative z-10">
         <DictionaryHeader>
           <div className="hidden md:inline-block w-full">
@@ -16,7 +16,7 @@ export default function RootLayout({
           </div>
         </DictionaryHeader>
       </div>
-      {children}
+      <div className="flex-1 overflow-hidden bg-[#F6F6F6]">{children}</div>
     </div>
   );
 }

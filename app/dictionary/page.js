@@ -55,7 +55,7 @@ function Dictionary() {
       <div className="flex justify-center ">
         <div className="flex flex-col">
           <div className="bg-white rounded-[16px] p-8 flex-1 justify-center items-center mb-8 shadow-md">
-            <h1 className="text-start w-full text-[#AAAAAA] font-bold text-lg md:text-xl mb-8">
+            <h1 className="text-start w-full text-[#AAAAAA] font-bold text-base lg:text-lg mb-8">
               People are talking about...
             </h1>
             <WordFrequencyBarChart numberOfWords={10} height={300} />
@@ -70,7 +70,7 @@ function Dictionary() {
         </div>
 
         <div className="hidden lg:inline-block bg-white w-full h-full shadow-md rounded-[16px] p-8 ml-4 relative">
-          <h2 className="font-semibold text-xl mb-6"> Word of the day</h2>
+          <h2 className="font-semibold text-sm lg:text-xl mb-6"> Word of the day</h2>
           <p className="font-semibold text-5xl text-[#047AFF] mb-6">Cap</p>
           <p className="font-extralight text-sm text-gray-500 mb-6">Slang</p>
           <p className="font-semibold text-base text-black mb-4">

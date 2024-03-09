@@ -1,5 +1,4 @@
 import { Dialog, Transition } from "@headlessui/react";
-import Link from "next/link";
 import { Fragment, useState } from "react";
 
 export default function NavigationMenu({ setIsOpen, isOpen, children }) {

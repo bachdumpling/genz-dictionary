@@ -32,11 +32,6 @@ function WordCard({ word }) {
   }
 
   return (
-    // <div
-    //   className={`border rounded-[16px] mb-4 bg-white w-[350px] md:w-[500px] lg:w-[700px] min-h-[300px] md:min-h-[330px] ${
-    //     showMore && "overflow-auto"
-    //   }`}
-    // >
     <div
       className={`rounded-[16px] mb-6 bg-white w-[350px] md:w-[660px] min-h-[300px] md:min-h-[330px] shadow-md ${
         showMore && "overflow-auto"

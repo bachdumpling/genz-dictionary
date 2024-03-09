@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { BookOpenIcon, HomeIcon } from "@heroicons/react/24/solid";
+import { BookOpenIcon, HomeIcon, UserIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ImBooks } from "react-icons/im";
@@ -17,7 +17,7 @@ function Navigation() {
           <Link href="/">
             <Image src={logo} className="w-6 h-8 mt-[32px] mb-[32px]" />
           </Link>
-            <div className="border-b-1  md:w-[72px] w-[24px] h-[1px] mb-[32px] border"></div>
+          <div className="border-b-1  md:w-[72px] w-[24px] h-[1px] mb-[32px] border"></div>
         </div>
         {/* navigation */}
 
@@ -33,7 +33,6 @@ function Navigation() {
               <p className="hidden lg:flex">Home</p>
             </div>
           </Link>
-
           {/* Dictionary */}
           <Link href="/dictionary">
             <div
@@ -42,13 +41,11 @@ function Navigation() {
               }`}
             >
               {/* <Image src={search} /> */}
-              <ImBooks className="h-6 w-6 lg:ml-2 lg:mr-4" />
+              <ImBooks className="h-6 w-6 lg:ml-2.5 lg:mr-3.5" />
               <p className="hidden lg:flex">Dictionary</p>
             </div>
           </Link>
-
           {/* Thesaurus */}
-
           <Link href="/thesaurus">
             <div
               className={`flex p-[10px] mx-10 lg:mx-5 rounded-[10px] items-center ${
@@ -61,21 +58,18 @@ function Navigation() {
             </div>
           </Link>
 
-          {/* Dark Mode */}
-          {/* <div className="flex p-2 mx-4 rounded-[10px] border">
-          <MoonIcon className="h-6 w-6 ml-2 mr-4" />
-          <p>Dark Mode</p>
-        </div> */}
-
-          {/* Login */}
-          {/* <div
-          className={`flex p-2 mx-4 rounded-[10px] items-center ${
-            pathname.includes("/authentication") ? "text-white bg-black" : ""
-          }`}
-        >
-          <ArrowRightOnRectangleIcon className="h-6 w-6 ml-2 mr-4" />
-          <Link href="/authentication">Log In</Link>
-        </div> */}
+          {/* Authentication */}
+          <Link href="/authentication">
+            <div
+              className={`flex p-[10px] mx-10 lg:mx-5 rounded-[10px] items-center ${
+                pathname.includes("/authentication") ? "text-white bg-black" : ""
+              }`}
+            >
+              {/* <Image src={search} /> */}
+              <UserIcon className="h-6 w-6 lg:ml-2 lg:mr-4" />
+              <p className="hidden lg:flex">Sign In</p>
+            </div>
+          </Link>
         </div>
       </header>
     </>

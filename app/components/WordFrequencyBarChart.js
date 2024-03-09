@@ -64,40 +64,47 @@ function WordFrequencyBarChart({ numberOfWords = 5, height = 250 }) {
   return (
     <>
       <ResponsiveContainer width="100%" height={height}>
-        {/* <div style={{ position: "relative", zIndex: -1 }}> */}
-          <BarChart
-            // className="border"
-            data={displayedData}
-            layout="vertical"
-            margin={{
-              // top: 10,
-              // right: 40
-              left: 100,
-              // bottom: 10,
-            }}
-            barCategoryGap={6}
-          >
-            <CartesianGrid horizontal={false} strokeDasharray="1 1" />
-            <XAxis type="number" hide={true} domain={[0, 45]} />
-            <YAxis
-              axisLine={false}
-              dataKey="word"
-              type="category"
-              tick={<YAxisTick />}
-            />
-            <Bar dataKey="frequency" shape={<RoundedBar />}>
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={getGradientColor(entry.frequency)}
-                />
-              ))}
-            </Bar>
-          </BarChart>
-        {/* </div> */}
+        <BarChart
+          data={displayedData}
+          layout="vertical"
+          margin={{
+            left: 100,
+          }}
+          barCategoryGap={6}
+        >
+          <CartesianGrid horizontal={false} strokeDasharray="1 1" />
+          <XAxis type="number" hide={true} domain={[0, 45]} />
+          <YAxis
+            axisLine={false}
+            dataKey="word"
+            type="category"
+            tick={<YAxisTick />}
+          />
+          <Bar dataKey="frequency" shape={<RoundedBar />}>
+            {displayedData.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={getGradientColor(entry.frequency)}
+              />
+            ))}
+            {displayedData.map((entry, index) => (
+              <text
+                key={`label-${index}`}
+                x={entry.frequency + 5}
+                y={index * 20 + 12}
+                fill="#666"
+                textAnchor="start"
+                fontWeight="bold"
+              >
+                {entry.frequency}
+              </text>
+            ))}
+          </Bar>
+        </BarChart>
       </ResponsiveContainer>
     </>
   );
 }
+
 
 export default WordFrequencyBarChart;

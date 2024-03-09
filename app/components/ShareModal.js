@@ -13,7 +13,6 @@ import {
   EmailIcon,
 } from "react-share";
 import Messenger from "./Assets/Messenger.svg";
-import Instagram from "./Assets/Instagram.svg";
 import Image from "next/image";
 import { LinkIcon } from "@heroicons/react/24/solid";
 

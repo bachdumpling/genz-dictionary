@@ -8,9 +8,12 @@ import Loginbutton from "../components/Loginbutton";
 function Authentication() {
   return (
     <>
-      <div className="flex max-w-4xl mx-auto mt-32 gap-4 ">
+      <div className="flex md:flex-row flex-col max-w-4xl mx-auto mt-32 gap-4 ">
         <div className="flex justify-center items-center mx-4">
+          <div className="w-[200px] md:w-[400px] ">
+
           <Image src={loginSvg} alt="login" />
+          </div>
         </div>
         <SignIn />
       </div>

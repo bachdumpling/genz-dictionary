@@ -6,7 +6,7 @@ import {
   EyeSlashIcon,
   LockClosedIcon,
 } from "@heroicons/react/24/outline";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -14,14 +14,15 @@ function SignIn() {
 
   return (
     <div className="flex flex-col flex-1 px-6 justify-center items-center w-full">
-      <h1 className="text-4xl text-center font-medium pb-[48px]">
+      <h1 className="text-xl md:text-2xl lg:text-4xl text-center font-medium pb-[48px] pt-10">
         {" "}
         Welcome Back
       </h1>
       {/* <div className="border w-full"> */}
-      <button 
-      onClick={() => signIn("google")}
-      className="w-full border-2 p-4 flex justify-center items-center rounded-[10px] mb-[24px]">
+      <button
+        onClick={() => signIn("google")}
+        className="w-full border-2 p-4 flex justify-center items-center rounded-[10px] mb-[24px] text-xs md:text-sm lg:text-base"
+      >
         <FcGoogle className="h-6 w-6 mr-2" />
         Sign in with Google
       </button>

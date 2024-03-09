@@ -1,13 +1,8 @@
 "use client";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import React from "react";
-import { useEffect, useState } from "react";
-import WordCard from "./WordCard";
 import { usePathname, useRouter } from "next/navigation";
-import { useRecoilValue } from "recoil";
-import { chosenWordState } from "../../atoms/wordAtom";
 
 function Search({
   setInput,
@@ -100,7 +95,7 @@ function Search({
         <input
           type="text"
           className={
-            pathname.includes("/dictionary")
+            pathname.includes("/dictionary") || pathname === "/thesaurus" || pathname === "/authentication"
               ? `h-[40px] md:h-[48px] w-full py-2 px-4 bg-white rounded-[8px] md:rounded-[10px] outline-none focus:border focus:border-gray-400 shadow-sm pl-10 md:pl-12`
               : `h-[48px] w-full py-2 px-4 bg-white rounded-[10px] outline-none focus:border focus:border-gray-400 shadow-sm pl-6`
           }
@@ -111,14 +106,14 @@ function Search({
         <button
           // className={`top-${top} right-${right} left-${left} md:top-2 md:left-2 absolute  bg-[${buttonbgcolor}] bg-opacity-70 p-2 w-[${buttonwidth}px] h-[${buttonheight}px] rounded-[8px]`}
           className={
-            pathname.includes("/dictionary")
+            pathname.includes("/dictionary") || pathname === "/thesaurus" || pathname === "/authentication"
               ? `md:top-3 md:left-3 top-2 left-2 absolute`
               : `md:top-1.5 md:right-1.5 top-1.5 right-1.5 absolute  bg-[#D9D9D9] bg-opacity-70 p-2 rounded-[8px]`
           }
         >
           <MagnifyingGlassIcon
             className={
-              pathname.includes("/dictionary")
+              pathname.includes("/dictionary") || pathname === "/thesaurus" || pathname === "/authentication"
                 ? `text-[#AAAAAA] w-6 h-6`
                 : `text-[#FFFFFF] w-5 h-5`
             }

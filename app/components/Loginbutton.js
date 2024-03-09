@@ -1,7 +1,5 @@
 "use client";
-
 import { useSession, signIn, signOut } from "next-auth/react";
-// import UserInformation from "./user-information";
 
 export default function Component({ children }) {
   const { data: session } = useSession();
@@ -18,8 +16,8 @@ export default function Component({ children }) {
   }
   return (
     <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
+      {/* Not signed in <br />
+      <button onClick={() => signIn()}>Sign in</button> */}
     </>
   );
 }

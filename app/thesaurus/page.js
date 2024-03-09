@@ -45,12 +45,14 @@ const slangSynonymsAndAntonyms = {
 
 const SlangList = () => {
   return (
-    <div className="">
+    <div className="mx-8">
       {Object.entries(slangSynonymsAndAntonyms).map(([slang, data]) => (
         <div key={slang} className="w-full mb-10 bg-white rounded-[16px]">
-          <p className="font-bold text-3xl px-8 pt-6 pb-2">{slang}</p>
-          <div className="flex flex-row justify-center gap-4 p-6">
-            <div className="p-4 rounded-[16px] border bg-[#2C5EF1] w-1/2 h-fit text-white">
+          <p className="font-bold text-xl md:text-3xl px-8 pt-6 pb-2">
+            {slang}
+          </p>
+          <div className="flex flex-col md:flex-row  justify-center gap-4 p-6">
+            <div className="p-4 rounded-[16px] border bg-[#2C5EF1] w-full md:w-1/2 h-fit text-white">
               <p className="font-bold">Synonyms</p>
               <ul>
                 {Object.entries(data.synonyms).map((word, index) => {
@@ -65,7 +67,7 @@ const SlangList = () => {
                 })}
               </ul>
             </div>
-            <div className="p-4 rounded-[16px] border bg-[#57AAA7] w-1/2 h-fit text-white">
+            <div className="p-4 rounded-[16px] border bg-[#57AAA7] w-full md:w-1/2 h-fit text-white">
               <p className="font-bold">Antonyms</p>
               <ul>
                 {Object.entries(data.antonyms).map((word, index) => {
