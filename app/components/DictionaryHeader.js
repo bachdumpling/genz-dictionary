@@ -1,5 +1,5 @@
 "use client";
-import { UserCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -130,7 +130,7 @@ function DictionaryHeader({ children }) {
                 <p className="">Thesaurus</p>
               </div>
             </Link>
-
+            
             <Link href="/authentication">
               <div className={`flex ${pathname === "/" ? "" : ""}`}>
                 <ArrowRightOnRectangleIcon className="h-6 w-6 mr-4" />

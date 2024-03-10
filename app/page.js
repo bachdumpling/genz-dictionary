@@ -3,7 +3,6 @@ import { BuildingStorefrontIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { chosenWordState } from "../atoms/wordAtom";
-import Footer from "./components/Footer";
 import Search from "./components/Search";
 import { BiUserPin } from "react-icons/bi";
 import { BsFillChatLeftTextFill } from "react-icons/bs";
@@ -83,30 +82,6 @@ function Home() {
             <div className="relative -z-10 pt-8">
               <WordFrequencyBarChart />
             </div>
-
-            {/* <h2 className="font-bold text-lg">See What's Popular</h2>
-            <ol className="mt-4">
-              <div className="bg-white text-sm p-3 rounded-[10px] my-4 flex shadow-md w-full">
-                <p className="font-semibold pl-2 pr-4 text-gray-500">1</p>
-                <li> Cap</li>
-              </div>
-              <div className="bg-white text-sm p-3 rounded-[10px] my-4 flex shadow-md w-full">
-                <p className="font-semibold pl-2 pr-4 text-gray-500">2</p>
-                <li> Slay</li>
-              </div>
-              <div className="bg-white text-sm p-3 rounded-[10px] my-4 flex shadow-md w-full">
-                <p className="font-semibold pl-2 pr-4 text-gray-500">3</p>
-                <li> Simp</li>
-              </div>
-              <div className="bg-white text-sm p-3 rounded-[10px] my-4 flex shadow-md w-full">
-                <p className="font-semibold pl-2 pr-4 text-gray-500">4</p>
-                <li> Living Rent Free</li>
-              </div>
-              <div className="bg-white text-sm p-3 rounded-[10px] my-4 flex shadow-md w-full">
-                <p className="font-semibold pl-2 pr-4 text-gray-500">5</p>
-                <li> I'm Weak</li>
-              </div>
-            </ol> */}
           </div>
 
           <div className="md:grid grid-rows-3 grid-flow-row mx-4 md:mx-0 space-y-2 md:space-y-0">
@@ -181,12 +156,12 @@ function Home() {
               </div>
             </Link>
 
-            {/* <Link href="/authentication">
+            <Link href="/authentication">
               <div className={`flex ${pathname === "/" ? "" : ""}`}>
                 <ArrowRightOnRectangleIcon className="h-6 w-6 mr-4" />
                 <p className="">Sign In</p>
               </div>
-            </Link> */}
+            </Link>
           </div>
         </NavigationMenu>
       )}
