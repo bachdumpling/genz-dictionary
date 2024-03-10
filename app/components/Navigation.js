@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { BookOpenIcon, HomeIcon, UserIcon } from "@heroicons/react/24/solid";
+import { ArrowRightOnRectangleIcon, BookOpenIcon, HomeIcon, UserIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ImBooks } from "react-icons/im";
@@ -66,7 +66,7 @@ function Navigation() {
               }`}
             >
               {/* <Image src={search} /> */}
-              <UserIcon className="h-6 w-6 lg:ml-2 lg:mr-4" />
+              <ArrowRightOnRectangleIcon className="h-6 w-6 lg:ml-2 lg:mr-4" />
               <p className="hidden lg:flex">Sign In</p>
             </div>
           </Link>

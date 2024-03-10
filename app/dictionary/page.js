@@ -21,13 +21,25 @@ function Dictionary() {
 
     const fetchedWords = await Promise.all(
       wordArray.map(async (wordObj) => {
-        const res = await fetch(
-          `https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=${wordObj.word}`,
-          options
-        );
-        const words = await res.json();
-        const firstDefinition = words.list[0];
-        return { ...wordObj, definition: firstDefinition };
+        const cachedWord = localStorage.getItem(wordObj.word);
+        if (cachedWord) {
+          // If word is found in cache, return cached word
+          return JSON.parse(cachedWord);
+        } else {
+          // If word is not found in cache, fetch from API
+          const res = await fetch(
+            `https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=${wordObj.word}`,
+            options
+          );
+          const words = await res.json();
+          const firstDefinition = words.list[0];
+          // Cache the fetched word for a week
+          localStorage.setItem(
+            wordObj.word,
+            JSON.stringify({ ...wordObj, definition: firstDefinition })
+          );
+          return { ...wordObj, definition: firstDefinition };
+        }
       })
     );
 
@@ -46,8 +58,6 @@ function Dictionary() {
 
     fetchData();
   }, [pathname]);
-
-  // console.log(words[1].definition);
 
   return (
     <>
@@ -70,7 +80,10 @@ function Dictionary() {
         </div>
 
         <div className="hidden lg:inline-block bg-white w-full h-full shadow-md rounded-[16px] p-8 ml-4 relative">
-          <h2 className="font-semibold text-sm lg:text-xl mb-6"> Word of the day</h2>
+          <h2 className="font-semibold text-sm lg:text-xl mb-6">
+            {" "}
+            Word of the day
+          </h2>
           <p className="font-semibold text-5xl text-[#047AFF] mb-6">Cap</p>
           <p className="font-extralight text-sm text-gray-500 mb-6">Slang</p>
           <p className="font-semibold text-base text-black mb-4">

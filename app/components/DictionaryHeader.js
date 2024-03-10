@@ -40,7 +40,7 @@ function DictionaryHeader({ children }) {
   }, [wordThatIsClickedOn]);
 
   return (
-    <div className="flex justify-between py-6 px-6 md:px-2 items-center">
+    <div className="flex justify-between py-6 px-6 md:px-2 items-center p-4">
       {/* Header + Search bar + User Icon */}
 
       {/* Header */}
@@ -87,9 +87,9 @@ function DictionaryHeader({ children }) {
         </div>
 
         {/* User */}
-        <div className="h-[40px] w-[44px] md:h-[48px] md:w-[52px] bg-white flex justify-center items-center rounded-[8px] md:rounded-[10px] drop-shadow-md">
+        {/* <div className="h-[40px] w-[44px] md:h-[48px] md:w-[52px] bg-white flex justify-center items-center rounded-[8px] md:rounded-[10px] drop-shadow-md">
           <UserCircleIcon className="h-6 w-6 md:w-8 md:h-8 text-[#AAAAAA]" />
-        </div>
+        </div> */}
       </div>
 
       {isOpen && (
@@ -131,12 +131,12 @@ function DictionaryHeader({ children }) {
               </div>
             </Link>
 
-            {/* <Link href="/authentication">
+            <Link href="/authentication">
               <div className={`flex ${pathname === "/" ? "" : ""}`}>
                 <ArrowRightOnRectangleIcon className="h-6 w-6 mr-4" />
                 <p className="">Sign In</p>
               </div>
-            </Link> */}
+            </Link>
           </div>
         </NavigationMenu>
       )}
