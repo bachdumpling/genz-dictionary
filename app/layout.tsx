@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import Navigation from "./components/Navigation";
 import Provider from "./components/Provider";
 import { Analytics } from "@vercel/analytics/react";
+import Footer from "./components/Footer";
 import {
   RecoilRoot,
   atom,
@@ -20,12 +21,16 @@ export default function RootLayout({
     <RecoilRoot>
       <html>
         <head />
-        <body>
+        <body className="">
           <Provider>
-            <div className="flex h-screen relative">
+            <div className="flex relative">
               <Navigation />
-              <div className="flex-1 overflow-auto bg-[#F6F6F6]">
+              <div className="flex-1 overflow-hidden bg-[#F6F6F6]">
+                <div className="mb-12 md:mb-20">
+
                 {children}
+                </div>
+              <Footer />
               </div>
             </div>
             <Analytics />

@@ -7,6 +7,8 @@ import { usePathname } from "next/navigation.js";
 
 function Dictionary() {
   const [words, setWords] = useState([]);
+  const [loadedWords, setLoadedWords] = useState([]);
+  const [loadMoreVisible, setLoadMoreVisible] = useState(false);
   const pathname = usePathname();
 
   // Fetch words from API and set "Words" array
@@ -20,25 +22,17 @@ function Dictionary() {
     };
 
     const fetchedWords = await Promise.all(
-      wordArray.map(async (wordObj) => {
-        const cachedWord = localStorage.getItem(wordObj.word);
-        if (cachedWord) {
-          // If word is found in cache, return cached word
-          return JSON.parse(cachedWord);
-        } else {
-          // If word is not found in cache, fetch from API
+      wordArray.map(async (wordObj, index) => {
+        if (index < 5) {
           const res = await fetch(
             `https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=${wordObj.word}`,
             options
           );
           const words = await res.json();
           const firstDefinition = words.list[0];
-          // Cache the fetched word for a week
-          localStorage.setItem(
-            wordObj.word,
-            JSON.stringify({ ...wordObj, definition: firstDefinition })
-          );
           return { ...wordObj, definition: firstDefinition };
+        } else {
+          return wordObj;
         }
       })
     );
@@ -49,8 +43,21 @@ function Dictionary() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const words = await fetchWords(data);
-        setWords(words);
+        // Check if cache exists in local storage
+        const cachedWords = localStorage.getItem("cachedWords");
+        if (cachedWords) {
+          const parsedWords = JSON.parse(cachedWords);
+          setWords(parsedWords);
+          setLoadedWords(parsedWords.slice(0, 5)); // Initial load only top 5 cached words
+          setLoadMoreVisible(parsedWords.length > 5); // Make load more button visible if there are more than 5 words
+        } else {
+          const fetchedWords = await fetchWords(data);
+          setWords(fetchedWords);
+          setLoadedWords(fetchedWords.slice(0, 5)); // Initial load only top 5 words
+          setLoadMoreVisible(fetchedWords.length > 5); // Make load more button visible if there are more than 5 words
+          // Cache fetched words in local storage
+          localStorage.setItem("cachedWords", JSON.stringify(fetchedWords));
+        }
       } catch (error) {
         console.error(error);
       }
@@ -58,6 +65,13 @@ function Dictionary() {
 
     fetchData();
   }, [pathname]);
+
+  const handleLoadMore = () => {
+    console.log("Load more");
+    const nextWords = words.slice(loadedWords.length, loadedWords.length + 5);
+    setLoadedWords([...loadedWords, ...nextWords]);
+    setLoadMoreVisible(loadedWords.length + 5 < words.length); // Hide load more button when all words are loaded
+  };
 
   return (
     <>
@@ -76,6 +90,15 @@ function Dictionary() {
                 <WordCard key={word.word} word={word.definition} />
               ) : null;
             })}
+
+            {loadMoreVisible && (
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                onClick={handleLoadMore}
+              >
+                Load More
+              </button>
+            )}
           </div>
         </div>
 
