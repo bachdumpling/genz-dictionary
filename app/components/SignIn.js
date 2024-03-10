@@ -17,7 +17,11 @@ function SignIn() {
       <h1 className="text-xl md:text-2xl lg:text-4xl text-center font-medium pb-[48px] pt-10">
         {" "}
         Welcome Back
+      <h2 className="text-sm font-normal text-gray-500 pt-2" > 
+        This page is currently under maintainance.
+      </h2>
       </h1>
+
       {/* <div className="border w-full"> */}
       <button
         onClick={() => signIn("google")}
