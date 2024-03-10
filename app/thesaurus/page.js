@@ -45,7 +45,7 @@ const slangSynonymsAndAntonyms = {
 
 const SlangList = () => {
   return (
-    <div className="md:mx-0 mx-8">
+    <div className="md:mx-0 mx-4">
       {Object.entries(slangSynonymsAndAntonyms).map(([slang, data]) => (
         <div key={slang} className="w-full mb-10 bg-white rounded-[16px]">
           <p className="font-bold text-xl md:text-3xl px-8 pt-6 pb-2">

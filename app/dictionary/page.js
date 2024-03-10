@@ -23,17 +23,13 @@ function Dictionary() {
 
     const fetchedWords = await Promise.all(
       wordArray.map(async (wordObj, index) => {
-        if (index < 5) {
-          const res = await fetch(
-            `https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=${wordObj.word}`,
-            options
-          );
-          const words = await res.json();
-          const firstDefinition = words.list[0];
-          return { ...wordObj, definition: firstDefinition };
-        } else {
-          return wordObj;
-        }
+        const res = await fetch(
+          `https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=${wordObj.word}`,
+          options
+        );
+        const words = await res.json();
+        const firstDefinition = words.list[0];
+        return { ...wordObj, definition: firstDefinition };
       })
     );
 
@@ -48,13 +44,13 @@ function Dictionary() {
         if (cachedWords) {
           const parsedWords = JSON.parse(cachedWords);
           setWords(parsedWords);
-          setLoadedWords(parsedWords.slice(0, 5)); // Initial load only top 5 cached words
-          setLoadMoreVisible(parsedWords.length > 5); // Make load more button visible if there are more than 5 words
+          setLoadedWords(parsedWords.slice(0, 5));
+          setLoadMoreVisible(parsedWords.length > 5);
         } else {
           const fetchedWords = await fetchWords(data);
           setWords(fetchedWords);
-          setLoadedWords(fetchedWords.slice(0, 5)); // Initial load only top 5 words
-          setLoadMoreVisible(fetchedWords.length > 5); // Make load more button visible if there are more than 5 words
+          setLoadedWords(fetchedWords.slice(0, 5));
+          setLoadMoreVisible(fetchedWords.length > 5);
           // Cache fetched words in local storage
           localStorage.setItem("cachedWords", JSON.stringify(fetchedWords));
         }
@@ -67,33 +63,31 @@ function Dictionary() {
   }, [pathname]);
 
   const handleLoadMore = () => {
-    console.log("Load more");
     const nextWords = words.slice(loadedWords.length, loadedWords.length + 5);
-    setLoadedWords([...loadedWords, ...nextWords]);
-    setLoadMoreVisible(loadedWords.length + 5 < words.length); // Hide load more button when all words are loaded
+    setLoadedWords((prevLoadedWords) => [...prevLoadedWords, ...nextWords]);
+    setLoadMoreVisible(loadedWords.length + 5 < words.length);
   };
 
   return (
     <>
-      {/* <h1>Dictionary</h1> */}
       <div className="flex justify-center ">
-        <div className="flex flex-col">
+        <div className="flex flex-col mx-4">
           <div className="bg-white rounded-[16px] p-8 flex-1 justify-center items-center mb-8 shadow-md">
             <h1 className="text-start w-full text-[#AAAAAA] font-bold text-base lg:text-lg mb-8">
               People are talking about...
             </h1>
             <WordFrequencyBarChart numberOfWords={10} height={300} />
           </div>
-          <div className=" flex flex-col justify-center items-center">
-            {words.map((word) => {
+          <div className="flex flex-col justify-center items-center">
+            {loadedWords.map((word) => {
               return word.definition ? (
-                <WordCard key={word.word} word={word.definition} />
+                <WordCard key={word.word} word={word?.definition} />
               ) : null;
             })}
 
             {loadMoreVisible && (
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                className="bg-blue-500 hover:bg-blue-800  text-white text-sm md:text-base font-semibold py-3 px-6 rounded-[16px] mt-4"
                 onClick={handleLoadMore}
               >
                 Load More
@@ -103,16 +97,18 @@ function Dictionary() {
         </div>
 
         <div className="hidden lg:inline-block bg-white w-full h-full shadow-md rounded-[16px] p-8 ml-4 relative">
-          <h2 className="font-semibold text-sm lg:text-xl mb-6">
+          <h2 className="font-semibold text-sm lg:text-lg mb-6">
             {" "}
             Word of the day
           </h2>
-          <p className="font-semibold text-5xl text-[#047AFF] mb-6">Cap</p>
+          <p className="font-semibold text-2xl md:text-4xl text-[#047AFF] mb-6">
+            Cap
+          </p>
           <p className="font-extralight text-sm text-gray-500 mb-6">Slang</p>
-          <p className="font-semibold text-base text-black mb-4">
+          <p className="font-semibold text-sm text-black md:mb-4">
             Definition: The word lying but built different
           </p>
-          <p className="text-base text-black">
+          <p className="text-sm text-black">
             Example: "You are capping, be real"
           </p>
         </div>
