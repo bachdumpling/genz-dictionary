@@ -10,7 +10,7 @@ function Authentication() {
     <>
       <div className="flex md:flex-row flex-col max-w-4xl mx-auto mt-12 gap-4 ">
         <div className="flex justify-center items-center mx-4">
-          <div className="w-[200px] md:w-[400px] ">
+          <div className="w-[200px] md:w-[250px] lg:w-[400px] ">
 
           <Image src={loginSvg} alt="login" />
           </div>
